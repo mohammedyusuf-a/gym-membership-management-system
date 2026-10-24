@@ -427,7 +427,7 @@ const App = {
     window.GymDB.logoutAdmin();
     const guestAuth = { isAuthenticated: false, name: 'Guest', email: '', role: 'Guest', avatar: 'GU' };
     this.updateUserSessionUI(guestAuth);
-    this.showToast('You have been logged out of Fitness Athlete Club.', 'info');
+    this.showToast('You have been logged out of Gym Membership Management System.', 'info');
     this.openAuthGateway();
   },
 
@@ -2558,10 +2558,10 @@ const App = {
   },
 
   confirmResetData() {
-    if (confirm("Reset system data back to default Fitness Athlete Club members (Surabi, Dolphin, Biglee, Saran, etc.) and Market Protein Powders?")) {
+    if (confirm("Reset system data back to default Gym Membership Management System members (Surabi, Dolphin, Biglee, Saran, etc.) and Market Protein Powders?")) {
       window.GymDB.resetToDefaults();
       this.currentCartCoupon = '';
-      this.showToast('System data successfully reset to Fitness Athlete Club members & market protein powders!', 'info');
+      this.showToast('System data successfully reset to Gym Membership Management System members & market protein powders!', 'info');
       this.populateSelectDropdowns();
       this.updateCartHeaderUI();
       this.renderAll();

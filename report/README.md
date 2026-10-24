@@ -1,9 +1,9 @@
 # 📑 OOASE Academic Project Report & Documentation
 ### Object-Oriented Analysis & Software Engineering (OOASE) Report
-**Project Name**: Fitness Athlete Club (Titan Iron Gym) Management System  
+**Project Name**: Gym Membership Management System (Titan Iron Gym)  
 **Organization / Location**: Salem, Tamil Nadu, India  
-**Live Application**: [https://fitness-athlete-club.vercel.app/](https://fitness-athlete-club.vercel.app/)  
-**GitHub Repository**: [https://github.com/mohammedyusuf-a/fitness-athlete-club](https://github.com/mohammedyusuf-a/fitness-athlete-club)
+**Live Application**: [https://gym-membership-management-system.vercel.app/](https://gym-membership-management-system.vercel.app/)  
+**GitHub Repository**: [https://github.com/mohammedyusuf-a/gym-membership-management-system](https://github.com/mohammedyusuf-a/gym-membership-management-system)
 
 ---
 
@@ -11,7 +11,7 @@
 
 | Document Format | Description | Quick Link |
 |---|---|---|
-| **📕 Official Compiled PDF** | Complete publication-ready 23-page academic report with all figures and tables | [Download PDF](https://raw.githubusercontent.com/mohammedyusuf-a/fitness-athlete-club/main/report/Fitness_Athlete_Club_OOASE_Project_Report.pdf) \| [View on GitHub](Fitness_Athlete_Club_OOASE_Project_Report.pdf) |
+| **📕 Official Compiled PDF** | Complete publication-ready 23-page academic report with all figures and tables | [Download PDF](https://raw.githubusercontent.com/mohammedyusuf-a/gym-membership-management-system/main/report/Fitness_Athlete_Club_OOASE_Project_Report.pdf) \| [View on GitHub](Fitness_Athlete_Club_OOASE_Project_Report.pdf) |
 | **🌐 Interactive HTML Report** | High-fidelity interactive report with responsive CSS and embedded vector SVGs | [View HTML Report](OOASE_PROJECT_REPORT.html) |
 | **📝 Markdown Report** | Complete GitHub Flavored Markdown report source | [View Markdown Report](OOASE_PROJECT_REPORT.md) |
 | **🖼️ Report Figures & Screenshots** | 16 high-res figures (4 code architecture + 12 application output screens) | [Browse Images](images/) |

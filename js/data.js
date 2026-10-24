@@ -19,7 +19,7 @@ window.handleImgError = function(img, type = 'avatar', label = 'TG') {
   } else if (type === 'product') {
     img.src = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300"><rect width="400" height="300" fill="%23111116"/><rect x="130" y="60" width="140" height="190" rx="16" fill="%231a1a23" stroke="%23e50914" stroke-width="3"/><rect x="155" y="38" width="90" height="28" rx="6" fill="%23e50914"/><text x="200" y="145" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif" font-size="16" font-weight="800" fill="%23ffffff" text-anchor="middle">${initials} PROTEIN</text><text x="200" y="170" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif" font-size="11" font-weight="600" fill="%23e50914" text-anchor="middle">100% GENUINE LABDOOR</text><text x="200" y="195" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif" font-size="10" fill="%2371717a" text-anchor="middle">AUTHENTIC SUPPLEMENT</text></svg>`;
   } else {
-    img.src = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="350" viewBox="0 0 600 350"><rect width="600" height="350" fill="%23121217"/><rect x="20" y="20" width="560" height="310" rx="8" fill="%23181820" stroke="%23272732" stroke-width="2"/><text x="300" y="170" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif" font-size="24" font-weight="900" fill="%23e50914" text-anchor="middle">FITNESS ATHLETE CLUB</text><text x="300" y="205" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif" font-size="14" fill="%23a1a1aa" text-anchor="middle">Elite Athletic Training Arena</text></svg>`;
+    img.src = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="350" viewBox="0 0 600 350"><rect width="600" height="350" fill="%23121217"/><rect x="20" y="20" width="560" height="310" rx="8" fill="%23181820" stroke="%23272732" stroke-width="2"/><text x="300" y="170" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif" font-size="24" font-weight="900" fill="%23e50914" text-anchor="middle">GYM MEMBERSHIP MANAGEMENT SYSTEM</text><text x="300" y="205" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif" font-size="14" fill="%23a1a1aa" text-anchor="middle">Elite Athletic Training Arena</text></svg>`;
   }
 };
 
@@ -1502,7 +1502,7 @@ class GymStore {
     };
     localStorage.setItem(STORAGE_KEYS.AUTH, JSON.stringify(auth));
 
-    return { success: true, message: `Account created! Welcome to Fitness Athlete Club, ${newUser.name}.`, user: auth };
+    return { success: true, message: `Account created! Welcome to Gym Membership Management System, ${newUser.name}.`, user: auth };
   }
 
   loginAdmin(email, password) {
@@ -1529,7 +1529,7 @@ class GymStore {
     localStorage.setItem(STORAGE_KEYS.CART, JSON.stringify([]));
     localStorage.setItem(STORAGE_KEYS.SETTINGS, JSON.stringify({
       gymName: 'TITAN IRON GYM',
-      tagline: 'PREMIER FITNESS ATHLETE CLUB',
+      tagline: 'PREMIER GYM MEMBERSHIP MANAGEMENT SYSTEM',
       currency: '₹',
       upiId: 'titanirongym@okaxis',
       phone: '+91 98400 12345',
@@ -2080,7 +2080,7 @@ class GymStore {
   getSettings() {
     return this.get(STORAGE_KEYS.SETTINGS) || {
       gymName: 'TITAN IRON GYM',
-      tagline: 'PREMIER FITNESS ATHLETE CLUB',
+      tagline: 'PREMIER GYM MEMBERSHIP MANAGEMENT SYSTEM',
       currency: '₹',
       upiId: 'titanirongym@okaxis'
     };

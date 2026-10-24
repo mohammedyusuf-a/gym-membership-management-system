@@ -1,8 +1,8 @@
-# Fitness Athlete Club (Titan Iron Gym)
+# Gym Membership Management System (Titan Iron Gym)
 ## Object Oriented Analysis and Software Engineering (OOASE) – Project Report
 *Salem, Tamil Nadu • Live Web Application Deployment*  
-*Live Demo:* [https://fitness-athlete-club.vercel.app/](https://fitness-athlete-club.vercel.app/)  
-*GitHub Repository:* [https://github.com/mohammedyusuf-a/fitness-athlete-club](https://github.com/mohammedyusuf-a/fitness-athlete-club)
+*Live Demo:* [https://gym-membership-management-system.vercel.app/](https://gym-membership-management-system.vercel.app/)  
+*GitHub Repository:* [https://github.com/mohammedyusuf-a/gym-membership-management-system](https://github.com/mohammedyusuf-a/gym-membership-management-system)
 
 ---
 
@@ -29,7 +29,7 @@ Conventional athletic clubs and private gyms often rely on manual paper logbooks
 - Enable real-time **Touchless Barcode / QR Code Check-in** with instantaneous access grant or expiry denial.
 - Deliver an authentic **Pro Supplement Shop** with real-time cart drawer, coupon application, and Google Pay (GPay) / PhonePe UPI payment simulation.
 - Model the complete system architecture using standard object-oriented UML diagrams.
-- Deploy the production application globally with automated CI/CD on Vercel: `https://fitness-athlete-club.vercel.app/`.
+- Deploy the production application globally with automated CI/CD on Vercel: `https://gym-membership-management-system.vercel.app/`.
 
 ### 1.4 Scope of the Project
 - **Included:** Member registration and authentication, customer profile dashboard, permanent DP photo upload, fitness body metrics tracking, club safety and medical waiver acceptance, member directory with search and status filters, printable digital ID passes, 1-click renewal with automated invoice generation, certified trainer profiles (featuring leading Tamil fitness athletes such as Surabi, Dolphin, Biglee Murali, Saran Fitness, and Kabilan), pro shop with real-time cart, UPI QR code generation, CSV data export, and dark-mode athletic user interface.
@@ -44,7 +44,7 @@ Conventional athletic clubs and private gyms often rely on manual paper logbooks
 | **Security & Auth** | Role-Based Access Control (RBAC) | Separation of Customer/Member sessions from Creator Master Key access; discreet master modal unlock. |
 | **File Reader** | HTML5 FileReader API | Client-side binary-to-Base64 image encoding with 3MB file limits for permanent DP uploads. |
 | **E-Commerce & UPI** | JavaScript Cart & QRServer API | Dynamic price calculation, cart drawer, discount coupon parsing, and dynamic UPI QR code rendering for GPay / PhonePe. |
-| **Version Control** | Git, GitHub | Source code repository, branch tracking, and commit history (`mohammedyusuf-a/fitness-athlete-club`). |
+| **Version Control** | Git, GitHub | Source code repository, branch tracking, and commit history (`mohammedyusuf-a/gym-membership-management-system`). |
 | **Hosting & CI/CD** | Vercel Edge Platform | High-speed global CDN deployment with automated push-to-deploy pipeline. |
 | **OOASE Modeling** | UML (Unified Modeling Language) | Visual software architecture models: Use Case, Class, Sequence, Activity, State Chart, Component, and Deployment. |
 
@@ -119,7 +119,7 @@ The system follows a three-tier decoupled client-side Single-Page Application (S
 
 ## 5. Website Output Screenshots
 
-The following high-resolution screenshots document the live production system deployed at `https://fitness-athlete-club.vercel.app/`:
+The following high-resolution screenshots document the live production system deployed at `https://gym-membership-management-system.vercel.app/`:
 
 - **Figure 5.1:** Clean Public Member Login Gateway (`report/images/fig5_1_login_screen.png`)
 - **Figure 5.2:** Restricted Creator & Owner Admin Portal Modal (`report/images/fig5_2_creator_modal.png`)

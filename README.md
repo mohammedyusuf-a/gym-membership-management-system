@@ -1,21 +1,21 @@
-# 🏋️‍♂️ FITNESS ATHLETE CLUB (TITAN IRON GYM)
+# 🏋️‍♂️ TITAN IRON GYM - GYM MEMBERSHIP MANAGEMENT SYSTEM
 ### Salem's Premier Olympic Athletic Club & Member Management System
 
-[![Live Demo on Vercel](https://img.shields.io/badge/⚡_LIVE_DEMO-fitness--athlete--club.vercel.app-E50914?style=for-the-badge&logo=vercel&logoColor=white)](https://fitness-athlete-club.vercel.app/)
-[![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/mohammedyusuf-a/fitness-athlete-club)
-[![Report PDF](https://img.shields.io/badge/📑_PROJECT_REPORT-PDF_Download-2563EB?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](https://raw.githubusercontent.com/mohammedyusuf-a/fitness-athlete-club/main/report/Fitness_Athlete_Club_OOASE_Project_Report.pdf)
-[![Location](https://img.shields.io/badge/Location-Salem%2C%20Tamil%20Nadu-10b981?style=for-the-badge)](https://fitness-athlete-club.vercel.app/)
-[![Status](https://img.shields.io/badge/Status-100%25%20Live%20%26%20Active-success?style=for-the-badge)](https://fitness-athlete-club.vercel.app/)
+[![Live Demo on Vercel](https://img.shields.io/badge/⚡_LIVE_DEMO-gym--membership--management--system.vercel.app-E50914?style=for-the-badge&logo=vercel&logoColor=white)](https://gym-membership-management-system.vercel.app/)
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/mohammedyusuf-a/gym-membership-management-system)
+[![Report PDF](https://img.shields.io/badge/📑_PROJECT_REPORT-PDF_Download-2563EB?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](https://raw.githubusercontent.com/mohammedyusuf-a/gym-membership-management-system/main/report/Fitness_Athlete_Club_OOASE_Project_Report.pdf)
+[![Location](https://img.shields.io/badge/Location-Salem%2C%20Tamil%20Nadu-10b981?style=for-the-badge)](https://gym-membership-management-system.vercel.app/)
+[![Status](https://img.shields.io/badge/Status-100%25%20Live%20%26%20Active-success?style=for-the-badge)](https://gym-membership-management-system.vercel.app/)
 
 ---
 
 ## 🚀 Quick Access Links
 
-- 🌐 **Live Website (Vercel)**: **[https://fitness-athlete-club.vercel.app/](https://fitness-athlete-club.vercel.app/)**
-- 📕 **Official Project Report (PDF)**: **[Download PDF](https://raw.githubusercontent.com/mohammedyusuf-a/fitness-athlete-club/main/report/Fitness_Athlete_Club_OOASE_Project_Report.pdf)** | **[View on GitHub](report/Fitness_Athlete_Club_OOASE_Project_Report.pdf)**
+- 🌐 **Live Website (Vercel)**: **[https://gym-membership-management-system.vercel.app/](https://gym-membership-management-system.vercel.app/)**
+- 📕 **Official Project Report (PDF)**: **[Download PDF](https://raw.githubusercontent.com/mohammedyusuf-a/gym-membership-management-system/main/report/Fitness_Athlete_Club_OOASE_Project_Report.pdf)** | **[View on GitHub](report/Fitness_Athlete_Club_OOASE_Project_Report.pdf)**
 - 🌐 **Interactive HTML Report**: **[report/OOASE_PROJECT_REPORT.html](report/OOASE_PROJECT_REPORT.html)**
 - 📝 **Markdown Report Source**: **[report/OOASE_PROJECT_REPORT.md](report/OOASE_PROJECT_REPORT.md)**
-- 📁 **GitHub Source Code**: **[https://github.com/mohammedyusuf-a/fitness-athlete-club](https://github.com/mohammedyusuf-a/fitness-athlete-club)**
+- 📁 **GitHub Source Code**: **[https://github.com/mohammedyusuf-a/gym-membership-management-system](https://github.com/mohammedyusuf-a/gym-membership-management-system)**
 - 📍 **Location**: Salem, Tamil Nadu, India • 24/7 Access
 
 ---
@@ -25,7 +25,7 @@
 This repository includes a comprehensive, publication-grade academic report formatted according to university standards for **Object-Oriented Analysis & Software Engineering (OOASE)**.
 
 ### 📌 Document Access:
-- **Download Official PDF (23 Pages, Print-Ready)**: [Fitness_Athlete_Club_OOASE_Project_Report.pdf](https://raw.githubusercontent.com/mohammedyusuf-a/fitness-athlete-club/main/report/Fitness_Athlete_Club_OOASE_Project_Report.pdf)
+- **Download Official PDF (23 Pages, Print-Ready)**: [Fitness_Athlete_Club_OOASE_Project_Report.pdf](https://raw.githubusercontent.com/mohammedyusuf-a/gym-membership-management-system/main/report/Fitness_Athlete_Club_OOASE_Project_Report.pdf)
 - **Interactive HTML Report with Scalable Vector Diagrams**: [report/OOASE_PROJECT_REPORT.html](report/OOASE_PROJECT_REPORT.html)
 - **Report Documentation Index**: [report/README.md](report/README.md)
 
@@ -47,7 +47,7 @@ This repository includes a comprehensive, publication-grade academic report form
 ## 📂 Project Directory Structure
 
 ```tree
-fitness-athlete-club/
+gym-membership-management-system/
 ├── index.html                   # Core single-page athletic application & semantic views
 ├── package.json                 # Project metadata and local development scripts
 ├── vercel.json                  # Vercel Edge configuration & routing headers
@@ -184,10 +184,10 @@ fitness-athlete-club/
 ## 🏃 Local Development
 ```bash
 # Clone the repository
-git clone https://github.com/mohammedyusuf-a/fitness-athlete-club.git
+git clone https://github.com/mohammedyusuf-a/gym-membership-management-system.git
 
 # Navigate into directory
-cd fitness-athlete-club
+cd gym-membership-management-system
 
 # Start local server
 npx http-server . -p 8080 -c-1
@@ -196,4 +196,4 @@ Open `http://localhost:8080` in your web browser.
 
 ---
 
-Developed for **Fitness Athlete Club (Titan Iron Gym)** • Salem, Tamil Nadu, India.
+Developed for **TITAN IRON GYM - Gym Membership Management System** • Salem, Tamil Nadu, India.
