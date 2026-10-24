@@ -1,17 +1,17 @@
 # 🏋️‍♂️ TITAN IRON GYM - GYM MEMBERSHIP MANAGEMENT SYSTEM
 ### Salem's Premier Olympic Athletic Club & Member Management System
 
-[![Live Demo on Vercel](https://img.shields.io/badge/⚡_LIVE_DEMO-gym--membership--management--system.vercel.app-E50914?style=for-the-badge&logo=vercel&logoColor=white)](https://gym-membership-management-system.vercel.app/)
+[![Live Demo on Vercel](https://img.shields.io/badge/⚡_LIVE_DEMO-fitness--athlete--club.vercel.app-E50914?style=for-the-badge&logo=vercel&logoColor=white)](https://fitness-athlete-club.vercel.app/)
 [![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/mohammedyusuf-a/gym-membership-management-system)
 [![Report PDF](https://img.shields.io/badge/📑_PROJECT_REPORT-PDF_Download-2563EB?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](https://raw.githubusercontent.com/mohammedyusuf-a/gym-membership-management-system/main/report/Fitness_Athlete_Club_OOASE_Project_Report.pdf)
-[![Location](https://img.shields.io/badge/Location-Salem%2C%20Tamil%20Nadu-10b981?style=for-the-badge)](https://gym-membership-management-system.vercel.app/)
-[![Status](https://img.shields.io/badge/Status-100%25%20Live%20%26%20Active-success?style=for-the-badge)](https://gym-membership-management-system.vercel.app/)
+[![Location](https://img.shields.io/badge/Location-Salem%2C%20Tamil%20Nadu-10b981?style=for-the-badge)](https://fitness-athlete-club.vercel.app/)
+[![Status](https://img.shields.io/badge/Status-100%25%20Live%20%26%20Active-success?style=for-the-badge)](https://fitness-athlete-club.vercel.app/)
 
 ---
 
 ## 🚀 Quick Access Links
 
-- 🌐 **Live Website (Vercel)**: **[https://gym-membership-management-system.vercel.app/](https://gym-membership-management-system.vercel.app/)**
+- 🌐 **Live Website (Vercel)**: **[https://fitness-athlete-club.vercel.app/](https://fitness-athlete-club.vercel.app/)**
 - 📕 **Official Project Report (PDF)**: **[Download PDF](https://raw.githubusercontent.com/mohammedyusuf-a/gym-membership-management-system/main/report/Fitness_Athlete_Club_OOASE_Project_Report.pdf)** | **[View on GitHub](report/Fitness_Athlete_Club_OOASE_Project_Report.pdf)**
 - 🌐 **Interactive HTML Report**: **[report/OOASE_PROJECT_REPORT.html](report/OOASE_PROJECT_REPORT.html)**
 - 📝 **Markdown Report Source**: **[report/OOASE_PROJECT_REPORT.md](report/OOASE_PROJECT_REPORT.md)**

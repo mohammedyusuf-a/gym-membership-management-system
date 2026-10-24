@@ -2,7 +2,7 @@
 ### Object-Oriented Analysis & Software Engineering (OOASE) Report
 **Project Name**: Gym Membership Management System (Titan Iron Gym)  
 **Organization / Location**: Salem, Tamil Nadu, India  
-**Live Application**: [https://gym-membership-management-system.vercel.app/](https://gym-membership-management-system.vercel.app/)  
+**Live Application**: [https://fitness-athlete-club.vercel.app/](https://fitness-athlete-club.vercel.app/)  
 **GitHub Repository**: [https://github.com/mohammedyusuf-a/gym-membership-management-system](https://github.com/mohammedyusuf-a/gym-membership-management-system)
 
 ---

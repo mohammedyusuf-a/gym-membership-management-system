@@ -1,7 +1,7 @@
 # Gym Membership Management System (Titan Iron Gym)
 ## Object Oriented Analysis and Software Engineering (OOASE) – Project Report
 *Salem, Tamil Nadu • Live Web Application Deployment*  
-*Live Demo:* [https://gym-membership-management-system.vercel.app/](https://gym-membership-management-system.vercel.app/)  
+*Live Demo:* [https://fitness-athlete-club.vercel.app/](https://fitness-athlete-club.vercel.app/)  
 *GitHub Repository:* [https://github.com/mohammedyusuf-a/gym-membership-management-system](https://github.com/mohammedyusuf-a/gym-membership-management-system)
 
 ---
@@ -29,7 +29,7 @@ Conventional athletic clubs and private gyms often rely on manual paper logbooks
 - Enable real-time **Touchless Barcode / QR Code Check-in** with instantaneous access grant or expiry denial.
 - Deliver an authentic **Pro Supplement Shop** with real-time cart drawer, coupon application, and Google Pay (GPay) / PhonePe UPI payment simulation.
 - Model the complete system architecture using standard object-oriented UML diagrams.
-- Deploy the production application globally with automated CI/CD on Vercel: `https://gym-membership-management-system.vercel.app/`.
+- Deploy the production application globally with automated CI/CD on Vercel: `https://fitness-athlete-club.vercel.app/`.
 
 ### 1.4 Scope of the Project
 - **Included:** Member registration and authentication, customer profile dashboard, permanent DP photo upload, fitness body metrics tracking, club safety and medical waiver acceptance, member directory with search and status filters, printable digital ID passes, 1-click renewal with automated invoice generation, certified trainer profiles (featuring leading Tamil fitness athletes such as Surabi, Dolphin, Biglee Murali, Saran Fitness, and Kabilan), pro shop with real-time cart, UPI QR code generation, CSV data export, and dark-mode athletic user interface.
@@ -119,7 +119,7 @@ The system follows a three-tier decoupled client-side Single-Page Application (S
 
 ## 5. Website Output Screenshots
 
-The following high-resolution screenshots document the live production system deployed at `https://gym-membership-management-system.vercel.app/`:
+The following high-resolution screenshots document the live production system deployed at `https://fitness-athlete-club.vercel.app/`:
 
 - **Figure 5.1:** Clean Public Member Login Gateway (`report/images/fig5_1_login_screen.png`)
 - **Figure 5.2:** Restricted Creator & Owner Admin Portal Modal (`report/images/fig5_2_creator_modal.png`)
