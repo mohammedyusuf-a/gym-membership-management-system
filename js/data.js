@@ -1390,6 +1390,14 @@ class GymStore {
       users[index] = { ...users[index], ...data };
       localStorage.setItem(STORAGE_KEYS.USERS, JSON.stringify(users));
 
+      if (data.dpImage) {
+        localStorage.setItem('FITNESS_CLUB_USER_DP_' + clean, data.dpImage);
+        localStorage.setItem('FITNESS_CLUB_ACTIVE_DP', data.dpImage);
+      } else if (data.dpImage === '') {
+        localStorage.removeItem('FITNESS_CLUB_USER_DP_' + clean);
+        localStorage.removeItem('FITNESS_CLUB_ACTIVE_DP');
+      }
+
       const currentAuth = this.getAdminAuth();
       if (currentAuth && (currentAuth.email.toLowerCase() === clean || currentAuth.id === emailOrId)) {
         const updatedAuth = {
@@ -1397,7 +1405,7 @@ class GymStore {
           name: users[index].name,
           email: users[index].email,
           avatar: users[index].avatar,
-          dpImage: users[index].dpImage || ''
+          dpImage: users[index].dpImage || localStorage.getItem('FITNESS_CLUB_USER_DP_' + clean) || ''
         };
         localStorage.setItem(STORAGE_KEYS.AUTH, JSON.stringify(updatedAuth));
       }
@@ -1427,6 +1435,7 @@ class GymStore {
     // Check against registered users
     const matched = users.find(u => u.email.toLowerCase() === cleanEmail && u.password === cleanPass);
     if (matched) {
+      const savedDP = matched.dpImage || localStorage.getItem('FITNESS_CLUB_USER_DP_' + cleanEmail) || localStorage.getItem('FITNESS_CLUB_ACTIVE_DP') || '';
       const auth = {
         isAuthenticated: true,
         id: matched.id,
@@ -1434,6 +1443,7 @@ class GymStore {
         name: matched.name,
         role: matched.role,
         avatar: matched.avatar || matched.name.substring(0, 2).toUpperCase(),
+        dpImage: savedDP,
         loginTime: new Date().toISOString()
       };
       localStorage.setItem(STORAGE_KEYS.AUTH, JSON.stringify(auth));

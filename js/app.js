@@ -249,6 +249,8 @@ const App = {
     const email = auth.email || 'guest@fitnessathlete.club';
     const role = auth.role || 'Visitor';
     const avatar = auth.avatar || (name.substring(0, 2).toUpperCase() || 'TG');
+    const cleanEmail = (email || '').trim().toLowerCase();
+    const dpImage = auth.dpImage || (cleanEmail ? localStorage.getItem('FITNESS_CLUB_USER_DP_' + cleanEmail) : '') || localStorage.getItem('FITNESS_CLUB_ACTIVE_DP') || '';
 
     const sideName = document.getElementById('sidebar-admin-name');
     const sideEmail = document.getElementById('sidebar-admin-email');
@@ -258,9 +260,24 @@ const App = {
 
     if (sideName) sideName.innerText = name;
     if (sideEmail) sideEmail.innerText = `${role} • ${email}`;
-    if (sideAvatar) sideAvatar.innerText = avatar;
+
+    if (sideAvatar) {
+      if (dpImage) {
+        sideAvatar.innerHTML = `<img src="${dpImage}" alt="DP" style="width:100%;height:100%;border-radius:50%;object-fit:cover;display:block;">`;
+      } else {
+        sideAvatar.innerText = avatar;
+      }
+    }
+
     if (topName) topName.innerText = name.split(' ')[0];
-    if (topAvatar) topAvatar.innerText = avatar;
+
+    if (topAvatar) {
+      if (dpImage) {
+        topAvatar.innerHTML = `<img src="${dpImage}" alt="DP" style="width:100%;height:100%;border-radius:50%;object-fit:cover;display:block;">`;
+      } else {
+        topAvatar.innerText = avatar;
+      }
+    }
   },
 
   checkAuthOnLoad() {
@@ -501,12 +518,14 @@ const App = {
     setText('profile-hero-id', user.id || 'TG-MEMBER-001');
     setText('profile-avatar-initials', user.avatar || (user.name ? user.name.substring(0, 2).toUpperCase() : 'MY'));
 
-    // DP Image handling
+    // Permanent DP Image handling
+    const cleanEmail = (user.email || 'yusuf@fitnessathlete.com').trim().toLowerCase();
+    const savedDP = user.dpImage || localStorage.getItem('FITNESS_CLUB_USER_DP_' + cleanEmail) || localStorage.getItem('FITNESS_CLUB_ACTIVE_DP') || '';
     const imgEl = document.getElementById('profile-avatar-img');
     const initialsEl = document.getElementById('profile-avatar-initials');
-    if (user.dpImage) {
+    if (savedDP) {
       if (imgEl) {
-        imgEl.src = user.dpImage;
+        imgEl.src = savedDP;
         imgEl.style.display = 'block';
       }
       if (initialsEl) initialsEl.style.display = 'none';
@@ -535,10 +554,25 @@ const App = {
       const base64 = e.target.result;
       const auth = window.GymDB.getAdminAuth();
       const email = auth.email || 'yusuf@fitnessathlete.com';
+      const cleanEmail = email.trim().toLowerCase();
 
+      // 1. Save permanently to dedicated localStorage keys
+      localStorage.setItem('FITNESS_CLUB_USER_DP_' + cleanEmail, base64);
+      localStorage.setItem('FITNESS_CLUB_ACTIVE_DP', base64);
+
+      // 2. Update user profile in GymDB
       window.GymDB.updateUserProfile(email, { dpImage: base64 });
 
-      // Update Profile UI
+      // 3. Update member avatar in members roster
+      const members = window.GymDB.getMembers();
+      const mIdx = members.findIndex(m => (m.email && m.email.toLowerCase() === cleanEmail) || m.id === 'GYM-1000');
+      if (mIdx !== -1) {
+        members[mIdx].avatar = base64;
+        members[mIdx].dpImage = base64;
+        window.GymDB.set(STORAGE_KEYS.MEMBERS, members);
+      }
+
+      // 4. Update Profile Dashboard avatar
       const imgEl = document.getElementById('profile-avatar-img');
       const initialsEl = document.getElementById('profile-avatar-initials');
       if (imgEl) {
@@ -547,13 +581,10 @@ const App = {
       }
       if (initialsEl) initialsEl.style.display = 'none';
 
-      // Update sidebar and topbar
-      const sideAvatar = document.getElementById('sidebar-user-avatar');
-      const topAvatar = document.getElementById('topbar-user-avatar');
-      if (sideAvatar) sideAvatar.innerHTML = `<img src="${base64}" style="width:100%;height:100%;border-radius:50%;object-fit:cover;">`;
-      if (topAvatar) topAvatar.innerHTML = `<img src="${base64}" style="width:100%;height:100%;border-radius:50%;object-fit:cover;">`;
+      // 5. Update topbar and sidebar with permanent photo
+      this.updateUserSessionUI({ ...auth, dpImage: base64 });
 
-      this.showToast('Profile picture uploaded successfully!', 'success');
+      this.showToast('Profile photo saved permanently! It will stay until you change it.', 'success');
     };
     reader.readAsDataURL(file);
   },
@@ -561,6 +592,12 @@ const App = {
   removeProfileDP() {
     const auth = window.GymDB.getAdminAuth();
     const email = auth.email || 'yusuf@fitnessathlete.com';
+    const cleanEmail = email.trim().toLowerCase();
+
+    // Remove from dedicated persistent keys
+    localStorage.removeItem('FITNESS_CLUB_USER_DP_' + cleanEmail);
+    localStorage.removeItem('FITNESS_CLUB_ACTIVE_DP');
+
     window.GymDB.updateUserProfile(email, { dpImage: '' });
 
     const imgEl = document.getElementById('profile-avatar-img');
@@ -580,6 +617,8 @@ const App = {
   saveCustomerProfile() {
     const auth = window.GymDB.getAdminAuth();
     const email = auth.email || 'yusuf@fitnessathlete.com';
+    const cleanEmail = email.trim().toLowerCase();
+    const savedDP = localStorage.getItem('FITNESS_CLUB_USER_DP_' + cleanEmail) || localStorage.getItem('FITNESS_CLUB_ACTIVE_DP') || '';
 
     const data = {
       name: document.getElementById('cust-fullname')?.value?.trim() || 'Md Yusuf',
@@ -597,10 +636,14 @@ const App = {
       termsAccepted: document.getElementById('profile-terms-checkbox')?.checked ?? true
     };
 
+    if (savedDP) {
+      data.dpImage = savedDP;
+    }
+
     data.avatar = data.name.substring(0, 2).toUpperCase();
 
     window.GymDB.updateUserProfile(email, data);
-    this.updateUserSessionUI({ ...auth, name: data.name, avatar: data.avatar });
+    this.updateUserSessionUI({ ...auth, name: data.name, avatar: data.avatar, dpImage: savedDP });
     this.populateCustomerProfileUI();
 
     this.showToast('Your profile & fitness metrics have been saved!', 'success');
