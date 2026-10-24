@@ -3,6 +3,7 @@
 
 [![Live Demo on Vercel](https://img.shields.io/badge/⚡_LIVE_DEMO-fitness--athlete--club.vercel.app-E50914?style=for-the-badge&logo=vercel&logoColor=white)](https://fitness-athlete-club.vercel.app/)
 [![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/mohammedyusuf-a/fitness-athlete-club)
+[![Report PDF](https://img.shields.io/badge/📑_PROJECT_REPORT-PDF_Download-2563EB?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](https://raw.githubusercontent.com/mohammedyusuf-a/fitness-athlete-club/main/report/Fitness_Athlete_Club_OOASE_Project_Report.pdf)
 [![Location](https://img.shields.io/badge/Location-Salem%2C%20Tamil%20Nadu-10b981?style=for-the-badge)](https://fitness-athlete-club.vercel.app/)
 [![Status](https://img.shields.io/badge/Status-100%25%20Live%20%26%20Active-success?style=for-the-badge)](https://fitness-athlete-club.vercel.app/)
 
@@ -11,15 +12,99 @@
 ## 🚀 Quick Access Links
 
 - 🌐 **Live Website (Vercel)**: **[https://fitness-athlete-club.vercel.app/](https://fitness-athlete-club.vercel.app/)**
+- 📕 **Official Project Report (PDF)**: **[Download PDF](https://raw.githubusercontent.com/mohammedyusuf-a/fitness-athlete-club/main/report/Fitness_Athlete_Club_OOASE_Project_Report.pdf)** | **[View on GitHub](report/Fitness_Athlete_Club_OOASE_Project_Report.pdf)**
+- 🌐 **Interactive HTML Report**: **[report/OOASE_PROJECT_REPORT.html](report/OOASE_PROJECT_REPORT.html)**
+- 📝 **Markdown Report Source**: **[report/OOASE_PROJECT_REPORT.md](report/OOASE_PROJECT_REPORT.md)**
 - 📁 **GitHub Source Code**: **[https://github.com/mohammedyusuf-a/fitness-athlete-club](https://github.com/mohammedyusuf-a/fitness-athlete-club)**
 - 📍 **Location**: Salem, Tamil Nadu, India • 24/7 Access
+
+---
+
+## 📑 Academic Project Report (OOASE)
+
+This repository includes a comprehensive, publication-grade academic report formatted according to university standards for **Object-Oriented Analysis & Software Engineering (OOASE)**.
+
+### 📌 Document Access:
+- **Download Official PDF (23 Pages, Print-Ready)**: [Fitness_Athlete_Club_OOASE_Project_Report.pdf](https://raw.githubusercontent.com/mohammedyusuf-a/fitness-athlete-club/main/report/Fitness_Athlete_Club_OOASE_Project_Report.pdf)
+- **Interactive HTML Report with Scalable Vector Diagrams**: [report/OOASE_PROJECT_REPORT.html](report/OOASE_PROJECT_REPORT.html)
+- **Report Documentation Index**: [report/README.md](report/README.md)
+
+### 📐 7 UML Architectural Diagrams Included:
+1. **Use Case Diagram**: System interactions between Members, Master Coaches, and the Creator/Admin.
+2. **Class Diagram**: Object-oriented domain entities (`Member`, `Plan`, `Product`, `Order`, `AttendanceRecord`, `Coach`, `GymStore`).
+3. **Sequence Diagram**: Member Fee Payment, UPI verification, and Membership Extension flow.
+4. **Activity Diagram**: Member QR Scanning and Daily Floor Check-in workflow.
+5. **State Machine Diagram**: Full lifecycle of a Membership (Prospective → Active → Expiring Soon → Expired → Suspended).
+6. **Component Diagram**: Architectural layering (UI Presentation, State Controller, LocalStorage Adapter, UPI Simulator).
+7. **Deployment Diagram**: Cloud edge infrastructure (Vercel Global CDN, HTTPS, Client Web Browser).
+
+### 📸 Verification Figures:
+- **4 Code Architecture Figures**: Semantic HTML5, Data Models, Reactive State Engine, and Deployment Config.
+- **12 Output Application Figures**: Login, Dashboard, Members, Fee Management, Attendance Scanner, Add Member, Profile, Diet Plans, Workout Engine, Reports, and UPI QR Modal.
+
+---
+
+## 📂 Project Directory Structure
+
+```tree
+fitness-athlete-club/
+├── index.html                   # Core single-page athletic application & semantic views
+├── package.json                 # Project metadata and local development scripts
+├── vercel.json                  # Vercel Edge configuration & routing headers
+├── README.md                    # Project overview, quick links, architecture & structure
+├── .gitignore                   # Git ignore specifications
+│
+├── .vscode/
+│   └── launch.json              # VSCode debugging & local launch configuration
+│
+├── assets/                      # High-resolution media assets
+│   ├── gym_arena_luxury.jpg     # Olympic arena high-resolution background
+│   ├── gym_skydeck_luxury.jpg   # Luxury skydeck gym ambient visual
+│   └── influencers/             # Tamil fitness influencers & master coach avatars
+│       ├── biglee_murali.png    # Biglee Murali (Celebrity Fitness Master)
+│       ├── dolphin.png          # Dolphin (Athletic Coach)
+│       ├── kabilan.png          # Kabilan (Strength Specialist)
+│       ├── saran.png            # Saran Fitness (Powerlifting & Hypertrophy Coach)
+│       └── surabi.png           # Surabi (Fitness Athlete & Coach)
+│
+├── css/
+│   └── styles.css               # Design system: obsidian dark theme, CSS grid & animations
+│
+├── js/
+│   ├── app.js                   # Application state engine, DOM rendering, cart & checkout logic
+│   └── data.js                  # Initial seed data: members, tiers, coaches, supplements
+│
+└── report/                      # Academic Project Report (OOASE Submission)
+    ├── README.md                # Report documentation guide & table of contents
+    ├── Fitness_Athlete_Club_OOASE_Project_Report.pdf # Complete 23-page compiled PDF report (~7.3 MB)
+    ├── OOASE_PROJECT_REPORT.html # Interactive HTML report with 7 SVG UML diagrams
+    ├── OOASE_PROJECT_REPORT.md   # Full GitHub Flavored Markdown report source
+    ├── code_preview.html        # Code architecture preview showcase
+    └── images/                  # High-resolution verification figures & screenshots
+        ├── fig4_1_code_index.png          # Code: Semantic HTML5 Structure
+        ├── fig4_2_code_data.png           # Code: Data Models & Default Store
+        ├── fig4_3_code_app.png            # Code: Reactive State Engine
+        ├── fig4_4_code_deploy.png         # Code: Cloud Edge Deployment Pipeline
+        ├── fig5_1_login_screen.png        # Screen: Member Authentication
+        ├── fig5_2_creator_modal.png       # Screen: Creator Secret Key Modal
+        ├── fig5_3_master_dashboard.png    # Screen: Executive Master Dashboard
+        ├── fig5_4_member_profile.png      # Screen: Member Profile & Body Metrics
+        ├── fig5_5_terms_waiver.png        # Screen: Club Terms & Health Waiver
+        ├── fig5_6_gym_members.png         # Screen: Gym Members Directory
+        ├── fig5_7_trainers_coaches.png    # Screen: Tamil Celebrity Coaches
+        ├── fig5_8_membership_plans.png    # Screen: Membership Plans in INR
+        ├── fig5_9_plan_matrix.png         # Screen: Plan Comparison Matrix
+        ├── fig5_10_supplement_store.png   # Screen: Pro Supplement Store
+        ├── fig5_11_cart_drawer.png        # Screen: Real-Time Cart Drawer
+        └── fig5_12_upi_checkout.png       # Screen: Live UPI QR Checkout
+```
 
 ---
 
 ## ⚡ Key Highlights & Features
 
 ### 1. 👤 Customer / Member Profile & Fitness Dashboard
-- **Profile Photo (DP) Upload**: Instant custom photo upload with live preview and remove option (`localStorage` persistence).
+- **Profile Photo (DP) Upload**: Instant custom photo upload with live preview and remove option (`localStorage` persistence across sessions).
 - **Fast Check-in QR Pass**: Touchless athletic QR code pass (`TG-MEMBER-001`, Gold Elite Tier) for instant reception scanning.
 - **Personal & Contact Information**:
   - Full Name: `Md Yusuf`
