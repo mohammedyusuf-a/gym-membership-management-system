@@ -1,82 +1,114 @@
-# TITAN IRON GYM - Membership Management System
+# 🏋️‍♂️ FITNESS ATHLETE CLUB (TITAN IRON GYM)
+### Salem's Premier Olympic Athletic Club & Member Management System
 
-A high-performance, athletic **Gym Membership Management System** built with a classic **Black & White theme with Gym Red accents** (`#E50914`), featuring clean, athletic typography (`Inter` and `Oswald`) without any AI/sci-fi gimmicks.
+[![Live Demo on Vercel](https://img.shields.io/badge/⚡_LIVE_DEMO-fitness--athlete--club.vercel.app-E50914?style=for-the-badge&logo=vercel&logoColor=white)](https://fitness-athlete-club.vercel.app/)
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/mohammedyusuf-a/fitness-athlete-club)
+[![Location](https://img.shields.io/badge/Location-Salem%2C%20Tamil%20Nadu-10b981?style=for-the-badge)](https://fitness-athlete-club.vercel.app/)
+[![Status](https://img.shields.io/badge/Status-100%25%20Live%20%26%20Active-success?style=for-the-badge)](https://fitness-athlete-club.vercel.app/)
 
 ---
 
-## ⚡ Core Features
+## 🚀 Quick Access Links
 
-### 1. Executive Dashboard & Metrics
-- **Real-Time KPIs**: Total Active Members, Today's Check-ins, Expiring Memberships (< 7 Days), and Monthly Verified Revenue.
-- **Fast Check-in Bar**: Header-mounted instant scanner / ID lookup with 1-click check-in and checkout.
-- **Live Floor Stream**: Tracks members currently on the gym floor with one-click log-out.
-- **Expiring Membership Alerts**: Immediate alert list with 1-click renewal action.
-- **Membership Tier Distribution**: Visual breakdown of subscriber count per plan.
+- 🌐 **Live Website (Vercel)**: **[https://fitness-athlete-club.vercel.app/](https://fitness-athlete-club.vercel.app/)**
+- 📁 **GitHub Source Code**: **[https://github.com/mohammedyusuf-a/fitness-athlete-club](https://github.com/mohammedyusuf-a/fitness-athlete-club)**
+- 📍 **Location**: Salem, Tamil Nadu, India • 24/7 Access
 
-### 2. Club Members Directory
-- Comprehensive data table with member photo avatars, Member IDs (`GYM-1001`), phone numbers, email, plan badges, assigned personal coaches, and expiry dates with days remaining.
-- Real-time search by Name, Member ID, Phone, or Email.
-- Filter by Plan Tier and Membership Status (`Active`, `Expiring Soon`, `Expired`).
-- **Actions per member**:
-  - **Instant Check-in / Checkout**
-  - **Digital ID Pass**: Printable athletic gym card with photo, barcode, and emergency contact
-  - **Renew Membership**: Extend membership by 1, 3, 6, or 12 months with automated invoice generation
-  - **Edit Profile**: Update phone, emergency contact, assigned coach, notes, or tier
-  - **Delete Record**: Remove member with confirmation safeguards
-- **Export to CSV**: Download complete membership rosters with one click.
+---
 
-### 3. Check-in Desk & Entry Terminal
-- Dedicated barcode / Member ID verification terminal simulator.
-- Automatic verification: Grants entry for active members; triggers **Access Denied** alert with renewal prompt for expired memberships.
-- Complete daily attendance logs with check-in/out timestamps and CSV export.
+## ⚡ Key Highlights & Features
 
-### 4. Membership Subscription Tiers
-- Plan cards: **Standard Fitness** ($30/mo), **Pro Strength & Conditioning** ($55/mo), **Elite Athlete** ($85/mo), and **VIP Personal Coaching** ($130/mo).
-- Feature breakdown, active subscriber count, and **+ Create New Plan** modal.
+### 1. 👤 Customer / Member Profile & Fitness Dashboard
+- **Profile Photo (DP) Upload**: Instant custom photo upload with live preview and remove option (`localStorage` persistence).
+- **Fast Check-in QR Pass**: Touchless athletic QR code pass (`TG-MEMBER-001`, Gold Elite Tier) for instant reception scanning.
+- **Personal & Contact Information**:
+  - Full Name: `Md Yusuf`
+  - Email: `yusuf@fitnessathlete.com`
+  - Phone: `+91 98401 99887`
+  - Date of Birth (DOB): `15-08-2001`
+  - Emergency Contact: `+91 98400 55443 (Brother - Tariq)`
+  - Residential Address: Anna Nagar, Tamil Nadu
+- **Fitness & Body Metrics Upload / Update**:
+  - Height: `178 cm`
+  - Current Weight: `76.5 kg`
+  - Target Weight: `82.0 kg`
+  - Body Fat: `13.5%`
+  - Primary Fitness Goal: Hypertrophy & Muscle Building (Bulking)
+  - Experience Level & Assigned Master Coach (`Saran Fitness`)
+- **Club Terms & Safety Waiver**: Interactive Gym Etiquette, Safety Rules, and Health Liability Waiver with agreement checkbox.
+- **Direct Member Logout**: Single-click logout returning safely to the login screen.
 
-### 5. Personal Coaches & Trainers
-- Certified trainer profiles with headshots, job title, specialization, experience badge, direct phone, and active client roster counts.
-- **+ Add Coach** modal.
+---
 
-### 6. Billing & Invoices
-- Lifetime financial summary: Total Revenue Collected, Pending Dues, and Total Invoices.
-- Complete transaction log with invoice numbers, payment methods (Credit Card, Cash, UPI, Bank Wire), status badges (`Paid`, `Unpaid`, `Overdue`).
-- **Official Payment Receipt Modal**: Formatted printable receipt with gym details, itemized breakdown, tax/total, and reference code.
-- **Record Manual Payment**: Instant billing for walk-ins and renewal fees.
+### 2. 🔐 Creator & Owner Secret Key Access
+- **Separated from Public Login**: General users only see Member Sign In & Sign Up. Admin portal is strictly hidden from standard public login cards.
+- **Dedicated Creator Key Icon**:
+  - Floating Golden Key icon button (`🔑`) at the bottom-left corner of the screen.
+  - Topbar Golden `Creator Key` button.
+  - Sidebar Golden Lock icon.
+- **Creator Master Credentials**:
+  - Email: `titan@gmail.com`
+  - Passcode: `titan123`
 
-### 7. Group Class Schedule
-- Timetable for heavy lifting, CrossFit, mobility, boxing conditioning, and hypertrophy sessions with coach assignments and capacity progress bars.
+---
+
+### 3. 🏪 Real-Time Pro Supplement & Protein Store
+- **Authentic Brand Catalog**: Optimum Nutrition (Gold Standard Whey), MuscleBlaze (Biozyme Performance), MyProtein (Impact Whey), Dymatize ISO 100, and Creatine Monohydrate.
+- **Live Shopping Cart**: Floating cart counter, coupon code discounts (`TITAN20` for 20% off), interactive flavor & size pickers.
+- **Real-Time Payment Simulation**:
+  - Instant Google Pay (GPay) & PhonePe UPI QR scanner.
+  - Cash on Delivery (COD) / Gym Reception counter pickup.
+  - Credit/Debit Cards with automated printable tax invoice generation.
+
+---
+
+### 4. 🥇 Tamil Gym Members & Elite Coaches
+- Featuring iconic Tamil athletes & coaches:
+  - **Surabi** (Fitness Athlete & Coach)
+  - **Dolphin** (Athletic Coach)
+  - **Biglee Murali** (Celebrity Fitness Master)
+  - **Saran Fitness** (Powerlifting & Hypertrophy Coach)
+  - **Kabilan** (Strength Specialist)
+  - **Md Yusuf** (Gold Elite Member)
+
+---
+
+### 5. 🏛️ Executive Club Operations & Terminal
+- **Executive Dashboard**: Real-time KPI counters, revenue metrics, live floor attendance stream.
+- **Barcode / ID Fast Check-in Desk**: Instant member lookup and daily attendance logs with CSV export.
+- **Membership Tiers in INR**: Exact pricing in Indian Rupees (`₹300` Standard, `₹500` Pro, `₹800` Elite, `₹1,200` VIP) with 44% yearly savings.
+- **Class Timetable**: Schedule for Olympic Weightlifting, High-Intensity Conditioning, and Turfs.
 
 ---
 
 ## 🎨 Design Philosophy
-- **Colors**: Deep obsidian black (`#0B0B0E`), dark card surfaces (`#18181E`), pure white text (`#FFFFFF`), and punchy athletic Gym Red (`#E50914`).
-- **Fonts**: Google Fonts `Inter` (high-readability, clean, standard font) and `Oswald` (bold, athletic, condensed uppercase titles).
-- **Zero AI Sci-Fi Gimmicks**: No glowing purple/cyan neon, no glassmorphism blur, no robotic fonts.
+- **Aesthetic**: Premium Dark Mode with Obsidian Black (`#0B0B0E`), Slate Cards (`#18181E`), and Gym Red Accents (`#E50914`).
+- **Typography**: Google Fonts `Inter` (high-readability UI text) and `Oswald` (bold condensed athletic titles).
+- **Responsive**: Fully optimized for mobile phones, tablets, laptops, and ultra-wide displays.
 
 ---
 
-## 🚀 How to Run Locally
-
-### Option 1: Open Directly in Any Browser
-Simply double-click `index.html` in Windows File Explorer or open it in Google Chrome, Microsoft Edge, or Firefox.
-
-### Option 2: Run with Local Web Server
-```powershell
-npx http-server . -p 5173
-```
-Then visit: `http://localhost:5173`
+## 💻 Tech Stack
+- **Frontend**: Semantic HTML5, Vanilla JavaScript (ES6+), Modern Vanilla CSS3
+- **Storage**: Browser LocalStorage with versioned auto-seeding
+- **Hosting**: Vercel Edge Network
+- **Version Control**: Git & GitHub
 
 ---
 
-## 📂 Project Architecture
+## 🏃 Local Development
+```bash
+# Clone the repository
+git clone https://github.com/mohammedyusuf-a/fitness-athlete-club.git
+
+# Navigate into directory
+cd fitness-athlete-club
+
+# Start local server
+npx http-server . -p 8080 -c-1
 ```
-OOASE project/
-├── index.html        # Main semantic SPA layout & modal dialogues
-├── css/
-│   └── styles.css    # High-contrast Black, White & Gym Red athletic design system
-├── js/
-│   ├── data.js       # LocalStorage state manager & seed mock dataset
-│   └── app.js        # UI routing, check-in logic, CRUD operations & receipt generator
-└── README.md         # Documentation
-```
+Open `http://localhost:8080` in your web browser.
+
+---
+
+Developed for **Fitness Athlete Club (Titan Iron Gym)** • Salem, Tamil Nadu, India.
