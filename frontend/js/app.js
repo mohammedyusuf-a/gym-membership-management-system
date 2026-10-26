@@ -239,6 +239,10 @@ const App = {
     this.closeModals();
   },
 
+  openAboutModal() {
+    this.openModal('modal-about-project');
+  },
+
   updateAdminStatusUI() {
     this.updateUserSessionUI();
   },
@@ -282,25 +286,32 @@ const App = {
 
   checkAuthOnLoad() {
     const auth = window.GymDB.getAdminAuth();
-    this.updateUserSessionUI(auth);
     if (!auth || !auth.isAuthenticated) {
-      this.openAuthGateway();
+      const guestAuth = { isAuthenticated: false, name: 'Guest', email: '', role: 'Guest', avatar: 'GU' };
+      this.updateUserSessionUI(guestAuth);
+      this.openAuthGateway(false);
     } else {
+      this.updateUserSessionUI(auth);
       this.closeAuthGateway();
     }
   },
 
-  openAuthGateway() {
+  openAuthGateway(allowClose = false) {
     const overlay = document.getElementById('auth-gateway-overlay');
     if (overlay) {
       overlay.style.display = 'flex';
       const closeBtn = document.getElementById('btn-auth-close');
       const auth = window.GymDB.getAdminAuth();
-      if (closeBtn) closeBtn.style.display = (auth && auth.isAuthenticated) ? 'block' : 'none';
+      const canClose = allowClose && (auth && auth.isAuthenticated);
+      if (closeBtn) closeBtn.style.display = canClose ? 'block' : 'none';
     }
   },
 
   closeAuthGateway() {
+    const auth = window.GymDB.getAdminAuth();
+    if (!auth || !auth.isAuthenticated) {
+      return;
+    }
     const overlay = document.getElementById('auth-gateway-overlay');
     if (overlay) overlay.style.display = 'none';
   },
@@ -332,6 +343,7 @@ const App = {
 
     const res = window.GymDB.loginUser(email, pass);
     if (res.success) {
+      sessionStorage.setItem('gym_active_session', 'true');
       if (msg) {
         msg.style.display = 'block';
         msg.className = 'auth-alert success';
@@ -377,6 +389,7 @@ const App = {
 
     const res = window.GymDB.registerUser(name, email, phone, role, pass);
     if (res.success) {
+      sessionStorage.setItem('gym_active_session', 'true');
       if (msg) {
         msg.style.display = 'block';
         msg.className = 'auth-alert success';
@@ -386,7 +399,11 @@ const App = {
       setTimeout(() => {
         this.closeAuthGateway();
         this.showToast(res.message, 'success');
-        this.navigateTo('profile');
+        if (role === 'Gym Member') {
+          this.navigateTo('profile');
+        } else {
+          this.navigateTo('dashboard');
+        }
       }, 500);
     } else {
       if (msg) {
@@ -398,8 +415,13 @@ const App = {
   },
 
   quickDemoLogin(type) {
+    sessionStorage.setItem('gym_active_session', 'true');
     if (type === 'admin') {
-      this.openCreatorAdminModal();
+      const res = window.GymDB.loginUser('titan@gmail.com', 'titan123');
+      this.updateUserSessionUI(res.user);
+      this.closeAuthGateway();
+      this.showToast('Welcome back, Titan Admin Master!', 'success');
+      this.navigateTo('dashboard');
     } else if (type === 'member') {
       const res = window.GymDB.loginUser('yusuf@fitnessathlete.com', 'member123');
       this.updateUserSessionUI(res.user);
@@ -425,10 +447,11 @@ const App = {
 
   handleLogout() {
     window.GymDB.logoutAdmin();
+    sessionStorage.removeItem('gym_active_session');
     const guestAuth = { isAuthenticated: false, name: 'Guest', email: '', role: 'Guest', avatar: 'GU' };
     this.updateUserSessionUI(guestAuth);
     this.showToast('You have been logged out of Gym Membership Management System.', 'info');
-    this.openAuthGateway();
+    this.openAuthGateway(false);
   },
 
   // ==========================================================================

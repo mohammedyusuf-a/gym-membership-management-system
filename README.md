@@ -6,17 +6,74 @@
 [![Report PDF](https://img.shields.io/badge/📑_PROJECT_REPORT-PDF_Download-2563EB?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](https://raw.githubusercontent.com/mohammedyusuf-a/gym-membership-management-system/main/report/Fitness_Athlete_Club_OOASE_Project_Report.pdf)
 [![Location](https://img.shields.io/badge/Location-Salem%2C%20Tamil%20Nadu-10b981?style=for-the-badge)](https://fitness-athlete-club.vercel.app/)
 [![Status](https://img.shields.io/badge/Status-100%25%20Live%20%26%20Active-success?style=for-the-badge)](https://fitness-athlete-club.vercel.app/)
+[![Database](https://img.shields.io/badge/Database-MongoDB%20v8.3-47A248?style=for-the-badge&logo=mongodb&logoColor=white)](http://localhost:5000/api/status)
+[![Backend](https://img.shields.io/badge/Backend-Node.js%20%2B%20Express-339933?style=for-the-badge&logo=node.js&logoColor=white)](http://localhost:5000)
 
 ---
 
-## 🚀 Quick Access Links
+## ⚡ Full-Stack Architecture (Frontend + Backend + MongoDB)
+
+The project has been separated into clean **Backend** and **Frontend** layers with permanent **MongoDB** database storage:
+
+```
+OOASE project/
+├── backend/
+│   ├── config/db.js          # Mongoose MongoDB connection & health check
+│   ├── models/               # MongoDB Schemas (Member, User, Plan, Trainer, Attendance, Invoice, Product, Class, Setting)
+│   ├── routes/               # Express REST APIs (/api/members, /api/auth, /api/attendance, /api/invoices, etc.)
+│   ├── data/                 # Seed dataset with authentic Tamil fitness influencers
+│   ├── scripts/seed.js       # Database seeder script
+│   ├── server.js             # Express server (Serves REST API + Frontend on port 5000)
+│   └── .env                  # PORT=5000, MONGO_URI=mongodb://127.0.0.1:27017/gym_management
+│
+├── frontend/
+│   ├── assets/               # Influencer images, luxury gym arena photos
+│   ├── css/styles.css        # Responsive dark-theme styling + MongoDB live status pill
+│   ├── js/api.js             # Client API service communicating with backend
+│   ├── js/data.js            # GymStore (real-time sync with MongoDB + offline fallback)
+│   ├── js/app.js             # UI Controller
+│   └── index.html            # Main Single-Page Application
+│
+└── package.json              # Unified project run scripts
+```
+
+### 🚀 Running the Project:
+
+```bash
+# 1. Start Full-Stack App (Backend API + Frontend on http://localhost:5000):
+npm start
+
+# 2. Or run backend explicitly:
+npm run backend
+
+# 3. Re-seed MongoDB with initial Tamil fitness influencers & default data:
+npm run seed
+```
+
+---
+
+## 🚀 Quick Access & About Links
 
 - 🌐 **Live Website (Vercel)**: **[https://fitness-athlete-club.vercel.app/](https://fitness-athlete-club.vercel.app/)**
-- 📕 **Official Project Report (PDF)**: **[Download PDF](https://raw.githubusercontent.com/mohammedyusuf-a/gym-membership-management-system/main/report/Fitness_Athlete_Club_OOASE_Project_Report.pdf)** | **[View on GitHub](report/Fitness_Athlete_Club_OOASE_Project_Report.pdf)**
-- 🌐 **Interactive HTML Report**: **[report/OOASE_PROJECT_REPORT.html](report/OOASE_PROJECT_REPORT.html)**
-- 📝 **Markdown Report Source**: **[report/OOASE_PROJECT_REPORT.md](report/OOASE_PROJECT_REPORT.md)**
 - 📁 **GitHub Source Code**: **[https://github.com/mohammedyusuf-a/gym-membership-management-system](https://github.com/mohammedyusuf-a/gym-membership-management-system)**
+- 📕 **Official Project Report (PDF)**: **[Download PDF](https://raw.githubusercontent.com/mohammedyusuf-a/gym-membership-management-system/main/report/Fitness_Athlete_Club_OOASE_Project_Report.pdf)** | **[View on GitHub](report/Fitness_Athlete_Club_OOASE_Project_Report.pdf)**
+- 🌐 **Interactive HTML Report**: **[Live Web Report](https://fitness-athlete-club.vercel.app/report/OOASE_PROJECT_REPORT.html)** | **[Source File](report/OOASE_PROJECT_REPORT.html)**
+- 📝 **Markdown Report Source**: **[report/OOASE_PROJECT_REPORT.md](report/OOASE_PROJECT_REPORT.md)**
+- 👤 **Creator & Lead Developer**: **Md Yusuf** (`yusuf@fitnessathlete.com` | Salem, Tamil Nadu, India)
 - 📍 **Location**: Salem, Tamil Nadu, India • 24/7 Access
+- 🔐 **Demo Credentials**:
+  - Member Sign-In: `yusuf@fitnessathlete.com` / `member123`
+  - Creator Master Admin Key: `titan@gmail.com` / `titan123`
+
+### ⚙️ GitHub Repository "About" Section Configuration:
+To set the official "About" section on your GitHub repository page:
+1. Go to **[https://github.com/mohammedyusuf-a/gym-membership-management-system](https://github.com/mohammedyusuf-a/gym-membership-management-system)**
+2. Click the **⚙️ (Gear Icon)** next to the **About** header on the right sidebar.
+3. Fill in:
+   - **Description**: `Salem's Premier Olympic Athletic Club & Member Management System (OOASE) - Full-Stack Express + MongoDB / Vanilla JS`
+   - **Website**: `https://fitness-athlete-club.vercel.app/`
+   - **Topics**: `gym`, `management-system`, `vercel`, `mongodb`, `express`, `javascript`, `fullstack`, `academic-project`, `ooase`
+4. Click **Save changes**.
 
 ---
 

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Code Preview</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 24px;
+      background: #1e1e1e;
+      font-family: 'Consolas', 'Courier New', monospace;
+      color: #d4d4d4;
+    }
+    .window-card {
+      background: #252526;
+      border: 1px solid #3c3c3c;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+      margin-bottom: 30px;
+    }
+    .window-header {
+      background: #323233;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid #3c3c3c;
+    }
+    .win-dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+    .dot-red { background: #ff5f56; }
+    .dot-yellow { background: #ffbd2e; }
+    .dot-green { background: #27c93f; }
+    .win-title {
+      font-size: 0.85rem;
+      color: #cccccc;
+      margin-left: 10px;
+      font-weight: bold;
+    }
+    pre {
+      margin: 0;
+      padding: 16px 20px;
+      font-size: 13px;
+      line-height: 1.5;
+      overflow-x: auto;
+      background: #1e1e1e !important;
+    }
+    code { font-family: inherit !important; }
+  </style>
+</head>
+<body>
+
+  <!-- 1. Project Architecture & index.html -->
+  <div class="window-card" id="card-index">
+    <div class="window-header">
+      <span class="win-dot dot-red"></span>
+      <span class="win-dot dot-yellow"></span>
+      <span class="win-dot dot-green"></span>
+      <span class="win-title">index.html — Fitness Athlete Club Single-Page Architecture & View Router</span>
+    </div>
+    <pre><code class="language-html">&lt;!-- FITNESS ATHLETE CLUB (TITAN IRON GYM) - SPA ENTRY POINT --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en" data-theme="dark"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;TITAN IRON GYM - Membership Management System&lt;/title&gt;
+  &lt;link rel="stylesheet" href="css/styles.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class="app-layout"&gt;
+    &lt;!-- Left Sidebar Navigation --&gt;
+    &lt;aside class="sidebar"&gt;
+      &lt;div class="brand-header"&gt;
+        &lt;div class="brand-emblem"&gt;TG&lt;/div&gt;
+        &lt;div class="brand-text"&gt;TITAN IRON FITNESS ATHLETE CLUB&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;ul class="nav-menu"&gt;
+        &lt;li class="nav-item active" data-view="dashboard"&gt;Executive Dashboard&lt;/li&gt;
+        &lt;li class="nav-item" data-view="members"&gt;Gym Members Directory&lt;/li&gt;
+        &lt;li class="nav-item" data-view="attendance"&gt;Fast Check-in Terminal&lt;/li&gt;
+        &lt;li class="nav-item" data-view="plans"&gt;Membership Plans in INR&lt;/li&gt;
+        &lt;li class="nav-item" data-view="trainers"&gt;Elite Coaches &amp; Trainers&lt;/li&gt;
+        &lt;li class="nav-item" data-view="proshop"&gt;Pro Supplement Store&lt;/li&gt;
+        &lt;li class="nav-item" data-view="profile"&gt;Member Profile &amp; Fitness&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/aside&gt;
+    ...
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+  </div>
+
+  <!-- 2. GymStore & LocalStorage State Engine (data.js) -->
+  <div class="window-card" id="card-data">
+    <div class="window-header">
+      <span class="win-dot dot-red"></span>
+      <span class="win-dot dot-yellow"></span>
+      <span class="win-dot dot-green"></span>
+      <span class="win-title">js/data.js — GymStore LocalStorage State Engine & Permanent User Data</span>
+    </div>
+    <pre><code class="language-javascript">// Unified Gym State Manager with Permanent LocalStorage Persistence
+class GymStore {
+  constructor() {
+    this.init();
+  }
+
+  // Persistent User Profile & Permanent DP Storage
+  updateUserProfile(emailOrId, data) {
+    const users = this.getUsers();
+    const clean = (emailOrId || '').trim().toLowerCase();
+    const index = users.findIndex(u => (u.email && u.email.toLowerCase() === clean) || u.id === emailOrId);
+    
+    if (index !== -1) {
+      users[index] = { ...users[index], ...data };
+      localStorage.setItem(STORAGE_KEYS.USERS, JSON.stringify(users));
+
+      // Permanent dedicated key ensuring uploaded DP never vanishes
+      if (data.dpImage) {
+        localStorage.setItem('FITNESS_CLUB_USER_DP_' + clean, data.dpImage);
+        localStorage.setItem('FITNESS_CLUB_ACTIVE_DP', data.dpImage);
+      }
+
+      const currentAuth = this.getAdminAuth();
+      if (currentAuth && (currentAuth.email.toLowerCase() === clean || currentAuth.id === emailOrId)) {
+        const updatedAuth = { ...currentAuth, name: users[index].name, dpImage: users[index].dpImage };
+        localStorage.setItem(STORAGE_KEYS.AUTH, JSON.stringify(updatedAuth));
+      }
+      return { success: true, user: users[index] };
+    }
+  }
+
+  // Real-Time Member Fast Check-in Processing
+  checkInMember(query) {
+    const members = this.getMembers();
+    const target = members.find(m => m.fullName.toLowerCase().includes(query.toLowerCase()) || m.id === query);
+    if (!target) return { success: false, message: 'Member not found.' };
+    if (target.status === 'Expired') return { success: false, message: 'Membership expired! Please renew.', member: target };
+    
+    this.addAttendanceLog({ memberId: target.id, memberName: target.fullName, checkInTime: new Date().toLocaleTimeString(), status: 'Checked In' });
+    return { success: true, message: `Check-in recorded: ${target.fullName}`, member: target };
+  }
+}</code></pre>
+  </div>
+
+  <!-- 3. Application Controller & Router (app.js) -->
+  <div class="window-card" id="card-app">
+    <div class="window-header">
+      <span class="win-dot dot-red"></span>
+      <span class="win-dot dot-yellow"></span>
+      <span class="win-dot dot-green"></span>
+      <span class="win-title">js/app.js — Application Controller, View Routing & DP File Reader</span>
+    </div>
+    <pre><code class="language-javascript">const App = {
+  // Navigation View Router
+  navigateTo(viewName) {
+    document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    
+    const target = document.getElementById(`view-${viewName}`);
+    if (target) {
+      target.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    if (viewName === 'profile') this.populateCustomerProfileUI();
+  },
+
+  // Permanent Profile Picture (DP) Upload with FileReader base64
+  handleProfileDPUpload(event) {
+    const file = event.target.files && event.target.files[0];
+    if (!file || !file.type.startsWith('image/')) return;
+    if (file.size > 3 * 1024 * 1024) return this.showToast('Max size 3MB', 'error');
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const base64 = e.target.result;
+      const auth = window.GymDB.getAdminAuth();
+      const email = (auth.email || 'yusuf@fitnessathlete.com').toLowerCase();
+
+      // Permanent persistence across sessions, reloads & logins
+      localStorage.setItem('FITNESS_CLUB_USER_DP_' + email, base64);
+      localStorage.setItem('FITNESS_CLUB_ACTIVE_DP', base64);
+      window.GymDB.updateUserProfile(email, { dpImage: base64 });
+
+      this.updateUserSessionUI({ ...auth, dpImage: base64 });
+      this.populateCustomerProfileUI();
+      this.showToast('Profile photo saved permanently!', 'success');
+    };
+    reader.readAsDataURL(file);
+  },
+
+  // Creator & Owner Master Admin Key Portal Modal
+  openCreatorAdminModal() {
+    this.closeAuthGateway();
+    document.getElementById('admin-pass-input').value = '';
+    this.openModal('modal-admin-portal');
+  }
+};</code></pre>
+  </div>
+
+  <!-- 4. Deployment Configuration & vercel.json -->
+  <div class="window-card" id="card-deploy">
+    <div class="window-header">
+      <span class="win-dot dot-red"></span>
+      <span class="win-dot dot-yellow"></span>
+      <span class="win-dot dot-green"></span>
+      <span class="win-title">vercel.json &amp; package.json — Vercel Edge Serverless Deployment</span>
+    </div>
+    <pre><code class="language-json">{
+  "version": 2,
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}</code></pre>
+  </div>
+
+  <script>hljs.highlightAll();</script>
+</body>
+</html>

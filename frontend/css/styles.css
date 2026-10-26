@@ -3907,9 +3907,9 @@ button, input, select, textarea {
 .auth-gateway-overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(7, 7, 10, 0.88);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background-color: rgba(6, 6, 9, 0.97);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   z-index: 99999;
   display: flex;
   align-items: center;
@@ -4685,4 +4685,91 @@ select.auth-input {
     grid-template-columns: 1fr;
   }
 }
+
+/* ==========================================================================
+   LIVE MONGODB CONNECTION STATUS BADGE
+   ========================================================================== */
+.mongo-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 12px;
+  border-radius: 9999px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.mongo-status-pill.mongo-online {
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: #34d399;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.15);
+}
+
+.mongo-status-pill.mongo-online .mongo-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #10b981;
+  box-shadow: 0 0 8px #10b981;
+  animation: mongo-pulse 2s infinite ease-in-out;
+}
+
+.mongo-status-pill.mongo-offline {
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  color: #f87171;
+}
+
+.mongo-status-pill.mongo-offline .mongo-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #ef4444;
+}
+
+@keyframes mongo-pulse {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+  70% { transform: scale(1.15); box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+.mongo-status-pill:hover {
+  filter: brightness(1.15);
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   ABOUT PROJECT & LIVE LINKS TOPBAR BUTTON
+   ========================================================================== */
+.btn-topbar-about {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  border-radius: 6px;
+  padding: 6px 11px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.btn-topbar-about:hover {
+  background: rgba(56, 189, 248, 0.22);
+  border-color: #38bdf8;
+  transform: translateY(-1px);
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.25);
+}
+
+.btn-auth-about-link:hover {
+  color: #7dd3fc !important;
+  background: rgba(56, 189, 248, 0.1) !important;
+}
+
 

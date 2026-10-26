@@ -1,16 +1,24 @@
 {
   "name": "gym-membership-management-system",
-  "version": "1.0.0",
-  "description": "TITAN IRON GYM - Gym Membership Management System",
+  "version": "2.0.0",
+  "description": "TITAN IRON GYM - Gym Membership Management System (Full-Stack Express + MongoDB)",
+  "main": "backend/server.js",
   "scripts": {
-    "start": "npx http-server . -p 8080 -c-1",
-    "dev": "npx http-server . -p 8080 -c-1",
-    "serve": "npx http-server ."
+    "build": "echo 'Build complete'",
+    "start": "node backend/server.js",
+    "dev": "node backend/server.js",
+    "backend": "node backend/server.js",
+    "frontend": "npx http-server frontend -p 8080 -c-1",
+    "seed": "node backend/scripts/seed.js",
+    "serve": "npx http-server frontend -p 8080 -c-1"
   },
   "keywords": [
     "gym",
     "management",
-    "ooase"
+    "ooase",
+    "mongodb",
+    "express",
+    "fullstack"
   ],
   "author": "",
   "license": "ISC"

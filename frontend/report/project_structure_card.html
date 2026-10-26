@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Project Structure Card</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@400;600;700;800&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: radial-gradient(circle at 50% 20%, #1e1e28 0%, #0c0d12 100%);
+      font-family: 'Inter', -apple-system, sans-serif;
+      color: #e2e8f0;
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .card-container {
+      width: 1080px;
+      background: #10121a;
+      border: 1px solid rgba(229, 9, 20, 0.35);
+      border-radius: 16px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(229, 9, 20, 0.15);
+      overflow: hidden;
+    }
+    .window-header {
+      background: #171924;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .dots {
+      display: flex;
+      gap: 8px;
+    }
+    .dot {
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+    }
+    .dot-red { background: #ff5f56; }
+    .dot-yellow { background: #ffbd2e; }
+    .dot-green { background: #27c93f; }
+    .window-title {
+      font-family: 'Fira Code', monospace;
+      font-size: 13px;
+      color: #94a3b8;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 500;
+    }
+    .badges {
+      display: flex;
+      gap: 10px;
+    }
+    .badge {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .badge-live { background: rgba(229, 9, 20, 0.2); color: #ff4d4d; border: 1px solid rgba(229, 9, 20, 0.4); }
+    .badge-status { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.4); }
+
+    .brand-banner {
+      background: linear-gradient(90deg, rgba(229, 9, 20, 0.15), rgba(15, 23, 42, 0.8));
+      padding: 20px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .brand-info h1 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 26px;
+      letter-spacing: 1px;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .brand-info h1 span { color: #e50914; }
+    .brand-info p {
+      color: #94a3b8;
+      font-size: 13px;
+      margin-top: 4px;
+    }
+    .meta-pills {
+      display: flex;
+      gap: 12px;
+    }
+    .meta-pill {
+      background: #1a1d2c;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      padding: 6px 14px;
+      text-align: right;
+    }
+    .meta-pill .num {
+      font-size: 16px;
+      font-weight: 800;
+      color: #f8fafc;
+      font-family: 'Fira Code', monospace;
+    }
+    .meta-pill .lbl {
+      font-size: 10px;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .tree-body {
+      padding: 24px 28px;
+      font-family: 'Fira Code', monospace;
+      font-size: 13px;
+      line-height: 1.85;
+      background: #0d0f17;
+      color: #cbd5e1;
+    }
+    .tree-row {
+      display: flex;
+      align-items: baseline;
+      transition: background 0.2s;
+      padding: 1px 6px;
+      border-radius: 4px;
+    }
+    .tree-row:hover { background: rgba(255, 255, 255, 0.04); }
+    .tree-indent {
+      color: #475569;
+      white-space: pre;
+    }
+    .tree-icon {
+      margin-right: 8px;
+      font-size: 14px;
+    }
+    .tree-name {
+      font-weight: 600;
+    }
+    .name-dir { color: #f59e0b; }
+    .name-html { color: #f97316; }
+    .name-css { color: #38bdf8; }
+    .name-js { color: #facc15; }
+    .name-json { color: #a855f7; }
+    .name-md { color: #ec4899; }
+    .name-pdf { color: #ef4444; font-weight: 700; }
+    .name-img { color: #10b981; }
+
+    .tree-desc {
+      margin-left: auto;
+      color: #64748b;
+      font-size: 11.5px;
+      font-family: 'Inter', sans-serif;
+      font-style: italic;
+      padding-left: 20px;
+    }
+
+    .footer-bar {
+      background: #171924;
+      padding: 14px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 12px;
+      color: #94a3b8;
+    }
+    .footer-links {
+      display: flex;
+      gap: 16px;
+      font-family: 'Fira Code', monospace;
+    }
+    .footer-links span {
+      color: #f1f5f9;
+      background: #232738;
+      padding: 2px 8px;
+      border-radius: 4px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card-container">
+    <div class="window-header">
+      <div class="dots">
+        <div class="dot dot-red"></div>
+        <div class="dot dot-yellow"></div>
+        <div class="dot dot-green"></div>
+      </div>
+      <div class="window-title">
+        📁 gym-membership-management-system • Master Architecture & File Tree
+      </div>
+      <div class="badges">
+        <span class="badge badge-live">Vercel Live</span>
+        <span class="badge badge-status">OOASE Certified</span>
+      </div>
+    </div>
+
+    <div class="brand-banner">
+      <div class="brand-info">
+        <h1>GYM MEMBERSHIP MANAGEMENT SYSTEM <span>// TITAN IRON GYM</span></h1>
+        <p>Salem, Tamil Nadu, India • Object-Oriented Analysis & Software Engineering (OOASE) Project</p>
+      </div>
+      <div class="meta-pills">
+        <div class="meta-pill">
+          <div class="num">36</div>
+          <div class="lbl">Total Files</div>
+        </div>
+        <div class="meta-pill">
+          <div class="num">7</div>
+          <div class="lbl">UML Diagrams</div>
+        </div>
+        <div class="meta-pill">
+          <div class="num">16</div>
+          <div class="lbl">Screenshots</div>
+        </div>
+        <div class="meta-pill">
+          <div class="num">100%</div>
+          <div class="lbl">Zero Dep</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tree-body">
+      <div class="tree-row">
+        <span class="tree-indent">gym-membership-management-system/</span>
+      </div>
+
+      <!-- Root files -->
+      <div class="tree-row">
+        <span class="tree-indent">├── </span><span class="tree-icon">🌐</span><span class="tree-name name-html">index.html</span>
+        <span class="tree-desc">Core single-page web app, semantic views & dialogs (133 KB)</span>
+      </div>
+      <div class="tree-row">
+        <span class="tree-indent">├── </span><span class="tree-icon">📦</span><span class="tree-name name-json">package.json</span>
+        <span class="tree-desc">Project configuration & development server scripts</span>
+      </div>
+      <div class="tree-row">
+        <span class="tree-indent">├── </span><span class="tree-icon">⚡</span><span class="tree-name name-json">vercel.json</span>
+        <span class="tree-desc">Vercel Edge CDN rewrites & cache control deployment rule</span>
+      </div>
+      <div class="tree-row">
+        <span class="tree-indent">├── </span><span class="tree-icon">📝</span><span class="tree-name name-md">README.md</span>
+        <span class="tree-desc">Complete project documentation, quick access links & credentials</span>
+      </div>
+      <div class="tree-row">
+        <span class="tree-indent">├── </span><span class="tree-icon">⚙️</span><span class="tree-name name-json">.gitignore</span>
+        <span class="tree-desc">Version control ignore file for clean commits</span>
+      </div>
+
+      <!-- Assets directory -->
+      <div class="tree-row">
+        <span class="tree-indent">│</span>
+      </div>
+      <div class="tree-row">
+        <span class="tree-indent">├── </span><span class="tree-icon">📁</span><span class="tree-name name-dir">assets/</span>
+        <span class="tree-desc">High-resolution gym photography & coach media assets</span>
+      </div>
+      <div class="tree-row">
+        <span class="tree-indent">│   ├── </span><span class="tree-icon">🖼️</span><span class="tree-name name-img">gym_arena_luxury.jpg</span>
+        <span class="tree-desc">Olympic arena luxury background graphic</span>
+      </div>
+      <div class="tree-row">
+        <span class="tree-indent">│   ├── </span><span class="tree-icon">🖼️</span><span class="tree-name name-img">gym_skydeck_luxury.jpg</span>
+        <span class="tree-desc">Luxury skydeck workout floor ambience visual</span>
+      </div>
+      <div class="tree-row">
+        <span class="tree-indent">│   └── </span><span class="tree-icon">📁</span><span class="tree-name name-dir">influencers/</span>
+        <span class="tree-desc">Tamil celebrity fitness trainers & master coaches</span>
+      </div>
+      <div class="tree-row">
+        <span class="tree-indent">│       ├── </span><span class="tree-icon">👤</span><span class="tree-name name-img">biglee_murali.png</span>
+        <span class="tree-desc">Biglee Murali (Celebrity Fitness Master)</span>
+      </div>
+      <div class="tree-row">
+        <span class="tree-indent">│       ├── </span><span class="tree-icon">👤</span><span class="tree-name name-img">dolphin.png</span>
+        <span class="tree-desc">Dolphin (Athletic Conditioning Coach)</span>
+      </div>
+      <div class="tree-row">
+        <span class="tree-indent">│       ├── </span><span class="tree-icon">👤</span><span class="tree-name name-img">kabilan.png</span>
+        <span class="tree-desc">Kabilan (Power & Strength Specialist)</span>
+      </div>
+      <div class="tree-row">
+        <span class="tree-indent">│       ├── </span><span class="tree-icon">👤</span><span class="tree-name name-img">saran.png</span>
+        <span class="tree-desc">Saran Fitness (Powerlifting & Hypertrophy Coach)</span>
+      </div>
+      <div class="tree-row">
+        <span class="tree-indent">│       └── </span><span class="tree-icon">👤</span><span class="tree-name name-img">surabi.png</span>
+        <span class="tree-desc">Surabi (Fitness Athlete & Women's Coach)</span>
+      </div>
+
+      <!-- CSS directory -->
+      <div class="tree-row">
+        <span class="tree-indent">│</span>
+      </div>
+      <div class="tree-row">
+        <span class="tree-indent">├── </span><span class="tree-icon">📁</span><span class="tree-name name-dir">css/</span>
+        <span class="tree-desc">Stylesheets & Design System</span>
+      </div>
+      <div class="tree-row">
+        <span class="tree-indent">│   └── </span><span class="tree-icon">🎨</span><span class="tree-name name-css">styles.css</span>
+        <span class="tree-desc">Titan Obsidian dark design tokens, responsive grid & animations</span>
+      </div>
+
+      <!-- JS directory -->
+      <div class="tree-row">
+        <span class="tree-indent">│</span>
+      </div>
+      <div class="tree-row">
+        <span class="tree-indent">├── </span><span class="tree-icon">📁</span><span class="tree-name name-dir">js/</span>
+        <span class="tree-desc">Application Logic & Data Store</span>
+      </div>
+      <div class="tree-row">
+        <span class="tree-indent">│   ├── </span><span class="tree-icon">⚡</span><span class="tree-name name-js">app.js</span>
+        <span class="tree-desc">Reactive controller, check-in desk, cart engine & QR generator</span>
+      </div>
+      <div class="tree-row">
+        <span class="tree-indent">│   └── </span><span class="tree-icon">💾</span><span class="tree-name name-js">data.js</span>
+        <span class="tree-desc">Seed data: members, INR tiers (₹300 - ₹1200), products, coaches</span>
+      </div>
+
+      <!-- Report directory -->
+      <div class="tree-row">
+        <span class="tree-indent">│</span>
+      </div>
+      <div class="tree-row">
+        <span class="tree-indent">└── </span><span class="tree-icon">📁</span><span class="tree-name name-dir" style="color:#ef4444;">report/</span>
+        <span class="tree-desc">Official OOASE Academic Submission Package</span>
+      </div>
+      <div class="tree-row">
+        <span class="tree-indent">    ├── </span><span class="tree-icon">📕</span><span class="tree-name name-pdf">Fitness_Athlete_Club_OOASE_Project_Report.pdf</span>
+        <span class="tree-desc">Compiled 23-page official PDF report (~7.3 MB)</span>
+      </div>
+      <div class="tree-row">
+        <span class="tree-indent">    ├── </span><span class="tree-icon">🌐</span><span class="tree-name name-html">OOASE_PROJECT_REPORT.html</span>
+        <span class="tree-desc">Interactive HTML report with 7 scalable vector SVG diagrams</span>
+      </div>
+      <div class="tree-row">
+        <span class="tree-indent">    ├── </span><span class="tree-icon">📝</span><span class="tree-name name-md">OOASE_PROJECT_REPORT.md</span>
+        <span class="tree-desc">GitHub Flavored Markdown academic report source</span>
+      </div>
+      <div class="tree-row">
+        <span class="tree-indent">    ├── </span><span class="tree-icon">📑</span><span class="tree-name name-md">README.md</span>
+        <span class="tree-desc">Report index, table of contents & download instructions</span>
+      </div>
+      <div class="tree-row">
+        <span class="tree-indent">    ├── </span><span class="tree-icon">💻</span><span class="tree-name name-html">code_preview.html</span>
+        <span class="tree-desc">Architectural source code snippet showcase</span>
+      </div>
+      <div class="tree-row">
+        <span class="tree-indent">    └── </span><span class="tree-icon">📁</span><span class="tree-name name-dir">images/</span>
+        <span class="tree-desc">16 high-resolution figures (4 code diagrams + 12 UI screens)</span>
+      </div>
+    </div>
+
+    <div class="footer-bar">
+      <div>Developed for <strong>Md Yusuf</strong> • Salem, Tamil Nadu, India</div>
+      <div class="footer-links">
+        <span>https://fitness-athlete-club.vercel.app/</span>
+        <span>github.com/mohammedyusuf-a/gym-membership-management-system</span>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

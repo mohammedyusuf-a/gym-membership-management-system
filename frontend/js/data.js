@@ -1349,7 +1349,9 @@ const DEFAULT_USERS = [
 // Unified Gym State Manager
 class GymStore {
   constructor() {
+    this.mongoConnected = false;
     this.init();
+    this.initMongoSync();
   }
 
   init() {
@@ -1360,6 +1362,56 @@ class GymStore {
     if (!localStorage.getItem(STORAGE_KEYS.USERS)) {
       localStorage.setItem(STORAGE_KEYS.USERS, JSON.stringify(DEFAULT_USERS));
     }
+  }
+
+  initMongoSync() {
+    // Initial sync
+    setTimeout(() => this.syncWithMongoDB(), 150);
+    // Recurring sync check every 12 seconds
+    setInterval(() => this.checkMongoHealth(), 12000);
+  }
+
+  async checkMongoHealth() {
+    if (!window.GymAPI) return;
+    try {
+      const res = await window.GymAPI.checkStatus();
+      const connected = !!(res && res.connected);
+      this.updateMongoUI(connected, res);
+    } catch (e) {
+      this.updateMongoUI(false);
+    }
+  }
+
+  async syncWithMongoDB() {
+    if (!window.GymAPI) return;
+    try {
+      const initData = await window.GymAPI.getInitialData();
+      if (initData && initData.success) {
+        this.mongoConnected = true;
+        if (Array.isArray(initData.members) && initData.members.length) this.set(STORAGE_KEYS.MEMBERS, initData.members);
+        if (Array.isArray(initData.plans) && initData.plans.length) this.set(STORAGE_KEYS.PLANS, initData.plans);
+        if (Array.isArray(initData.trainers) && initData.trainers.length) this.set(STORAGE_KEYS.TRAINERS, initData.trainers);
+        if (Array.isArray(initData.attendance)) this.set(STORAGE_KEYS.ATTENDANCE, initData.attendance);
+        if (Array.isArray(initData.invoices)) this.set(STORAGE_KEYS.INVOICES, initData.invoices);
+        if (Array.isArray(initData.products) && initData.products.length) this.set(STORAGE_KEYS.PRODUCTS, initData.products);
+        if (Array.isArray(initData.classes) && initData.classes.length) this.set(STORAGE_KEYS.CLASSES, initData.classes);
+        if (Array.isArray(initData.users) && initData.users.length) this.set(STORAGE_KEYS.USERS, initData.users);
+        if (initData.settings) this.set(STORAGE_KEYS.SETTINGS, initData.settings);
+
+        this.updateMongoUI(true, { database: 'gym_management' });
+
+        if (window.App && typeof window.App.renderAll === 'function') {
+          window.App.renderAll();
+        }
+      }
+    } catch (err) {
+      console.warn('[MongoDB Sync] Backend offline or unavailable, running on local cache.', err.message);
+      this.updateMongoUI(false);
+    }
+  }
+
+  updateMongoUI(connected, info = {}) {
+    this.mongoConnected = connected;
   }
 
   // Registered Users Manager
@@ -1409,6 +1461,12 @@ class GymStore {
         };
         localStorage.setItem(STORAGE_KEYS.AUTH, JSON.stringify(updatedAuth));
       }
+
+      // Persist to MongoDB
+      if (window.GymAPI && window.GymAPI.auth) {
+        window.GymAPI.auth.updateProfile(clean || emailOrId, data).catch(e => console.warn('[MongoDB] Profile sync warning:', e.message));
+      }
+
       return { success: true, user: users[index] };
     }
     return { success: false, message: 'User not found' };
@@ -1417,6 +1475,10 @@ class GymStore {
   // User Authentication & Session
   getAdminAuth() {
     try {
+      const activeSession = sessionStorage.getItem('gym_active_session');
+      if (activeSession !== 'true') {
+        return { isAuthenticated: false, email: '', name: 'Guest', role: 'Guest', avatar: 'GU' };
+      }
       const auth = localStorage.getItem(STORAGE_KEYS.AUTH);
       if (!auth) {
         return { isAuthenticated: false, email: '', name: 'Guest', role: 'Guest', avatar: 'GU' };
@@ -1490,6 +1552,11 @@ class GymStore {
     users.push(newUser);
     localStorage.setItem(STORAGE_KEYS.USERS, JSON.stringify(users));
 
+    // Persist to MongoDB
+    if (window.GymAPI && window.GymAPI.auth) {
+      window.GymAPI.auth.register(name, cleanEmail, phone, role, password).catch(e => console.warn('[MongoDB] Register sync warning:', e.message));
+    }
+
     // Auto-login newly registered user
     const auth = {
       isAuthenticated: true,
@@ -1536,12 +1603,8 @@ class GymStore {
       address: 'Plot 42, Anna Salai, Chennai, Tamil Nadu 600002'
     }));
 
-    localStorage.setItem(STORAGE_KEYS.AUTH, JSON.stringify({
-      isAuthenticated: true,
-      email: 'titan@gmail.com',
-      name: 'Titan Admin Master',
-      role: 'Administrator'
-    }));
+    localStorage.removeItem(STORAGE_KEYS.AUTH);
+    sessionStorage.removeItem('gym_active_session');
   }
 
   get(key) {
@@ -1623,6 +1686,18 @@ class GymStore {
       });
     }
 
+    // Persist to MongoDB
+    if (window.GymAPI && window.GymAPI.members) {
+      window.GymAPI.members.create({
+        ...newMember,
+        paymentMethod: memberData.initialPaymentMethod || 'UPI (Google Pay)'
+      }).then(res => {
+        if (res && res.member) {
+          console.log('[MongoDB] Member saved to database:', res.member.fullName);
+        }
+      }).catch(e => console.warn('[MongoDB] Member save error:', e.message));
+    }
+
     return newMember;
   }
 
@@ -1632,6 +1707,14 @@ class GymStore {
     if (index !== -1) {
       members[index] = { ...members[index], ...updatedFields };
       this.set(STORAGE_KEYS.MEMBERS, members);
+
+      // Persist to MongoDB
+      if (window.GymAPI && window.GymAPI.members) {
+        window.GymAPI.members.update(id, updatedFields).catch(e => {
+          console.warn('[MongoDB] Member update error:', e.message);
+        });
+      }
+
       return members[index];
     }
     return null;
@@ -1641,6 +1724,14 @@ class GymStore {
     let members = this.get(STORAGE_KEYS.MEMBERS);
     members = members.filter(m => m.id !== id);
     this.set(STORAGE_KEYS.MEMBERS, members);
+
+    // Persist to MongoDB
+    if (window.GymAPI && window.GymAPI.members) {
+      window.GymAPI.members.delete(id).catch(e => {
+        console.warn('[MongoDB] Member delete error:', e.message);
+      });
+    }
+
     return true;
   }
 
@@ -1676,6 +1767,15 @@ class GymStore {
       status: 'Paid',
       reference: `RNW-${Date.now().toString().slice(-6)}`
     });
+
+    // Persist to MongoDB
+    if (window.GymAPI && window.GymAPI.members) {
+      window.GymAPI.members.renew(id, cycle, paymentMethod).then(res => {
+        if (res && res.member) {
+          console.log('[MongoDB] Renewal saved to database:', res.member.fullName);
+        }
+      }).catch(e => console.warn('[MongoDB] Renewal save error:', e.message));
+    }
 
     return member;
   }
@@ -1907,6 +2007,11 @@ class GymStore {
       reference: `SHOP-${Date.now().toString().slice(-6)}`
     });
 
+    // Persist to MongoDB
+    if (window.GymAPI && window.GymAPI.products) {
+      window.GymAPI.products.purchase(product.id, member.id, paymentMethod, 1).catch(e => console.warn('[MongoDB] Purchase sync warning:', e.message));
+    }
+
     return { success: true, message: `Purchased ${product.name} for ₹${product.price.toLocaleString('en-IN')}. Receipt generated!`, invoice: inv };
   }
 
@@ -1936,6 +2041,11 @@ class GymStore {
         message: `Access Denied: ${member.fullName}'s membership expired on ${member.expiryDate}. Renewal required!`, 
         member 
       };
+    }
+
+    // Persist to MongoDB
+    if (window.GymAPI && window.GymAPI.attendance) {
+      window.GymAPI.attendance.checkIn(query).catch(e => console.warn('[MongoDB] Attendance checkin warning:', e.message));
     }
 
     const attendance = this.get(STORAGE_KEYS.ATTENDANCE);
@@ -2000,6 +2110,12 @@ class GymStore {
     };
     invoices.unshift(newInvoice);
     this.set(STORAGE_KEYS.INVOICES, invoices);
+
+    // Persist to MongoDB
+    if (window.GymAPI && window.GymAPI.invoices) {
+      window.GymAPI.invoices.create(newInvoice).catch(e => console.warn('[MongoDB] Invoice sync warning:', e.message));
+    }
+
     return newInvoice;
   }
 
@@ -2068,6 +2184,11 @@ class GymStore {
       status: 'Paid',
       reference: reference || `UPI-${Date.now().toString().slice(-6)}`
     });
+
+    // Persist to MongoDB
+    if (window.GymAPI && window.GymAPI.members) {
+      window.GymAPI.members.applyPlan(member.id, planId, cycle, paymentMethod, reference).catch(e => console.warn('[MongoDB] Plan apply warning:', e.message));
+    }
 
     return {
       success: true,
