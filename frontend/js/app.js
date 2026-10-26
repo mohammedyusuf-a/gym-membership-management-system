@@ -8,7 +8,7 @@
  */
 
 const App = {
-  currentView: 'dashboard',
+  currentView: 'adp',
   currentProShopCategory: 'ALL',
   currentProShopBrand: 'ALL',
   currentProShopSort: 'featured',
@@ -213,7 +213,7 @@ const App = {
         this.showToast('Creator & Master Admin Verified!', 'success');
         setTimeout(() => {
           this.closeModals();
-          this.navigateTo('dashboard');
+          this.navigateTo('adp');
         }, 600);
       } else {
         msgEl.style.backgroundColor = 'var(--status-expired-bg)';
@@ -293,6 +293,7 @@ const App = {
     } else {
       this.updateUserSessionUI(auth);
       this.closeAuthGateway();
+      this.navigateTo('adp');
     }
   },
 
@@ -353,11 +354,7 @@ const App = {
       setTimeout(() => {
         this.closeAuthGateway();
         this.showToast(res.message, 'success');
-        if (res.user && (res.user.role === 'Gym Member' || res.user.role === 'Athlete' || res.user.role === 'Customer')) {
-          this.navigateTo('profile');
-        } else {
-          this.navigateTo('dashboard');
-        }
+        this.navigateTo('adp');
       }, 400);
     } else {
       if (msg) {
@@ -399,11 +396,7 @@ const App = {
       setTimeout(() => {
         this.closeAuthGateway();
         this.showToast(res.message, 'success');
-        if (role === 'Gym Member') {
-          this.navigateTo('profile');
-        } else {
-          this.navigateTo('dashboard');
-        }
+        this.navigateTo('adp');
       }, 500);
     } else {
       if (msg) {
@@ -421,13 +414,13 @@ const App = {
       this.updateUserSessionUI(res.user);
       this.closeAuthGateway();
       this.showToast('Welcome back, Titan Admin Master!', 'success');
-      this.navigateTo('dashboard');
+      this.navigateTo('adp');
     } else if (type === 'member') {
       const res = window.GymDB.loginUser('yusuf@fitnessathlete.com', 'member123');
       this.updateUserSessionUI(res.user);
       this.closeAuthGateway();
       this.showToast('Welcome to your Member Portal, Md Yusuf!', 'success');
-      this.navigateTo('profile');
+      this.navigateTo('adp');
     } else {
       const guestAuth = {
         isAuthenticated: true,
@@ -441,7 +434,7 @@ const App = {
       this.updateUserSessionUI(guestAuth);
       this.closeAuthGateway();
       this.showToast('Welcome, Guest Athlete! Enjoy exploring the club.', 'info');
-      this.navigateTo('dashboard');
+      this.navigateTo('adp');
     }
   },
 
@@ -483,6 +476,7 @@ const App = {
     document.querySelectorAll('.table-wrapper').forEach(tw => { tw.scrollLeft = 0; });
 
     const titleMap = {
+      adp: 'ADP • Creator Page (Mohammed Yusuf A)',
       dashboard: 'Dashboard Overview',
       members: 'Gym Members',
       attendance: 'Attendance Desk',

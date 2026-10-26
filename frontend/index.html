@@ -33,7 +33,15 @@
       <ul class="nav-menu">
         <div class="nav-label">Main Operations</div>
         
-        <li class="nav-item active" data-view="dashboard">
+        <li class="nav-item active" data-view="adp" id="nav-item-adp">
+          <div class="nav-item-left">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+            <span>ADP • Creator Page</span>
+          </div>
+          <span class="nav-badge" style="background:linear-gradient(135deg, #e50914, #b91c1c); color:#ffffff; font-weight:700;">Creator</span>
+        </li>
+
+        <li class="nav-item" data-view="dashboard" id="nav-item-dashboard">
           <div class="nav-item-left">
             <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
             <span>Dashboard</span>
@@ -221,9 +229,224 @@
       <div class="view-content">
 
         <!-- ==========================================================================
+             VIEW 0: ADP (AUTHOR & DEVELOPER PORTAL / CREATOR PAGE)
+             ========================================================================== -->
+        <section class="view-panel active-view" id="view-adp">
+          
+          <!-- Creator Hero Card -->
+          <div style="background:linear-gradient(135deg, #14141a 0%, #1f1b24 50%, #121217 100%); border:1px solid rgba(229,9,20,0.4); border-radius:14px; padding:32px 36px; margin-bottom:24px; box-shadow:0 12px 40px rgba(0,0,0,0.5), 0 0 30px rgba(229,9,20,0.12); position:relative; overflow:hidden;">
+            <div style="position:absolute; right:-40px; top:-40px; width:220px; height:220px; background:radial-gradient(circle, rgba(229,9,20,0.18) 0%, transparent 70%); pointer-events:none;"></div>
+            
+            <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:24px; position:relative; z-index:2;">
+              <div style="display:flex; align-items:center; gap:22px;">
+                <div style="width:84px; height:84px; border-radius:50%; background:linear-gradient(135deg, #e50914, #7f1d1d); border:3px solid #fbbf24; display:flex; align-items:center; justify-content:center; font-size:2rem; font-weight:900; color:#fff; box-shadow:0 0 25px rgba(229,9,20,0.6); flex-shrink:0;">
+                  MY
+                </div>
+                <div>
+                  <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px; flex-wrap:wrap;">
+                    <span style="background:rgba(229,9,20,0.2); border:1px solid rgba(229,9,20,0.4); color:#f87171; font-size:0.72rem; font-weight:800; padding:3px 10px; border-radius:999px; text-transform:uppercase; letter-spacing:0.06em;">👑 Project Creator & Architect</span>
+                    <span style="background:rgba(251,191,36,0.15); border:1px solid rgba(251,191,36,0.4); color:#fbbf24; font-size:0.72rem; font-weight:800; padding:3px 10px; border-radius:999px;">OOASE Project</span>
+                    <span style="background:rgba(16,185,129,0.15); border:1px solid rgba(16,185,129,0.4); color:#34d399; font-size:0.72rem; font-weight:800; padding:3px 10px; border-radius:999px;">Live Vercel Edge</span>
+                  </div>
+                  <h1 style="font-family:'Oswald',sans-serif; font-size:2.2rem; font-weight:700; color:#ffffff; margin:0 0 6px 0; letter-spacing:0.5px;">MOHAMMED YUSUF A</h1>
+                  <p style="color:var(--text-secondary); font-size:0.92rem; margin:0; max-width:620px;">
+                    Lead Creator of <strong>TITAN IRON GYM</strong> — Salem's Premier Olympic Athletic Club & Member Management System. Full-stack engineering with Vanilla HTML5/CSS3/ES6+, Express.js REST services, and MongoDB database persistence.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Action CTAs -->
+              <div style="display:flex; flex-direction:column; gap:10px; align-items:flex-end;">
+                <button type="button" class="btn-red" onclick="App.navigateTo('dashboard')" style="font-size:0.95rem; padding:12px 24px; box-shadow:0 0 20px rgba(229,9,20,0.5); font-weight:700;">
+                  <span>Enter Master Dashboard &rarr;</span>
+                </button>
+                <div style="display:flex; gap:8px;">
+                  <button type="button" class="btn-outline" onclick="App.navigateTo('members')" style="font-size:0.78rem; padding:6px 12px;">
+                    <span>Gym Members</span>
+                  </button>
+                  <button type="button" class="btn-outline" onclick="App.navigateTo('proshop')" style="font-size:0.78rem; padding:6px 12px;">
+                    <span>Supplements Store</span>
+                  </button>
+                  <button type="button" class="btn-outline" onclick="App.openAboutModal()" style="font-size:0.78rem; padding:6px 12px; color:#38bdf8; border-color:rgba(56,189,248,0.4);">
+                    <span>About & Links</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Creator Details Row -->
+            <div style="margin-top:22px; padding-top:18px; border-top:1px solid rgba(255,255,255,0.08); display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:16px;">
+              <div>
+                <span style="font-size:0.72rem; color:var(--text-muted); text-transform:uppercase; font-weight:700; letter-spacing:0.05em; display:block;">Project Creator</span>
+                <span style="font-size:0.9rem; color:#ffffff; font-weight:600;">Mohammed Yusuf A</span>
+              </div>
+              <div>
+                <span style="font-size:0.72rem; color:var(--text-muted); text-transform:uppercase; font-weight:700; letter-spacing:0.05em; display:block;">Official Contact</span>
+                <span style="font-size:0.9rem; color:#38bdf8; font-weight:600;">yusuf@fitnessathlete.com</span>
+              </div>
+              <div>
+                <span style="font-size:0.72rem; color:var(--text-muted); text-transform:uppercase; font-weight:700; letter-spacing:0.05em; display:block;">Location</span>
+                <span style="font-size:0.9rem; color:#10b981; font-weight:600;">Salem, Tamil Nadu, India</span>
+              </div>
+              <div>
+                <span style="font-size:0.72rem; color:var(--text-muted); text-transform:uppercase; font-weight:700; letter-spacing:0.05em; display:block;">Course / Subject</span>
+                <span style="font-size:0.9rem; color:#f3f4f6; font-weight:600;">OOASE Academic Project</span>
+              </div>
+              <div>
+                <span style="font-size:0.72rem; color:var(--text-muted); text-transform:uppercase; font-weight:700; letter-spacing:0.05em; display:block;">Platform Hosting</span>
+                <span style="font-size:0.9rem; color:#fbbf24; font-weight:600;">Vercel Global Edge Network</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section: Quick Navigation Launchpad -->
+          <div style="margin-bottom:28px;">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:14px;">
+              <h3 style="font-family:'Oswald',sans-serif; font-size:1.25rem; font-weight:600; color:#ffffff; margin:0; letter-spacing:0.5px; display:flex; align-items:center; gap:8px;">
+                <span>🚀 System Operations Launchpad</span>
+              </h3>
+              <span style="font-size:0.78rem; color:var(--text-secondary);">Select any module to navigate directly</span>
+            </div>
+
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:16px;">
+              
+              <!-- Module 1: Dashboard -->
+              <div onclick="App.navigateTo('dashboard')" style="background:var(--bg-card); border:1px solid rgba(229,9,20,0.3); border-radius:12px; padding:20px; cursor:pointer; transition:all 0.25s ease;" onmouseover="this.style.transform='translateY(-3px)'; this.style.borderColor='var(--red-primary)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(229,9,20,0.3)';">
+                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
+                  <div style="width:40px; height:40px; border-radius:10px; background:rgba(229,9,20,0.15); display:flex; align-items:center; justify-content:center; color:var(--red-primary);">
+                    <svg style="width:20px;height:20px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+                  </div>
+                  <span style="font-size:0.75rem; color:var(--red-primary); font-weight:700;">Open &rarr;</span>
+                </div>
+                <h4 style="font-size:1.05rem; color:#ffffff; margin:0 0 6px 0;">Executive Master Dashboard</h4>
+                <p style="font-size:0.82rem; color:var(--text-secondary); margin:0;">Real-time KPI metrics, active floor radar, revenue stream in INR, and quick facility overview.</p>
+              </div>
+
+              <!-- Module 2: Members -->
+              <div onclick="App.navigateTo('members')" style="background:var(--bg-card); border:1px solid rgba(56,189,248,0.3); border-radius:12px; padding:20px; cursor:pointer; transition:all 0.25s ease;" onmouseover="this.style.transform='translateY(-3px)'; this.style.borderColor='#38bdf8';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(56,189,248,0.3)';">
+                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
+                  <div style="width:40px; height:40px; border-radius:10px; background:rgba(56,189,248,0.15); display:flex; align-items:center; justify-content:center; color:#38bdf8;">
+                    <svg style="width:20px;height:20px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                  </div>
+                  <span style="font-size:0.75rem; color:#38bdf8; font-weight:700;">Open &rarr;</span>
+                </div>
+                <h4 style="font-size:1.05rem; color:#ffffff; margin:0 0 6px 0;">Gym Members Directory</h4>
+                <p style="font-size:0.82rem; color:var(--text-secondary); margin:0;">20+ authentic athlete records with plan filters, status tags, contact details, and QR passes.</p>
+              </div>
+
+              <!-- Module 3: Attendance -->
+              <div onclick="App.navigateTo('attendance')" style="background:var(--bg-card); border:1px solid rgba(16,185,129,0.3); border-radius:12px; padding:20px; cursor:pointer; transition:all 0.25s ease;" onmouseover="this.style.transform='translateY(-3px)'; this.style.borderColor='#10b981';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(16,185,129,0.3)';">
+                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
+                  <div style="width:40px; height:40px; border-radius:10px; background:rgba(16,185,129,0.15); display:flex; align-items:center; justify-content:center; color:#10b981;">
+                    <svg style="width:20px;height:20px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                  </div>
+                  <span style="font-size:0.75rem; color:#10b981; font-weight:700;">Open &rarr;</span>
+                </div>
+                <h4 style="font-size:1.05rem; color:#ffffff; margin:0 0 6px 0;">Fast Check-in Desk</h4>
+                <p style="font-size:0.82rem; color:var(--text-secondary); margin:0;">Instant barcode & QR lookup, live floor roster, daily check-in stream, and CSV export.</p>
+              </div>
+
+              <!-- Module 4: Plans -->
+              <div onclick="App.navigateTo('plans')" style="background:var(--bg-card); border:1px solid rgba(251,191,36,0.3); border-radius:12px; padding:20px; cursor:pointer; transition:all 0.25s ease;" onmouseover="this.style.transform='translateY(-3px)'; this.style.borderColor='#fbbf24';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(251,191,36,0.3)';">
+                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
+                  <div style="width:40px; height:40px; border-radius:10px; background:rgba(251,191,36,0.15); display:flex; align-items:center; justify-content:center; color:#fbbf24;">
+                    <svg style="width:20px;height:20px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
+                  </div>
+                  <span style="font-size:0.75rem; color:#fbbf24; font-weight:700;">Open &rarr;</span>
+                </div>
+                <h4 style="font-size:1.05rem; color:#ffffff; margin:0 0 6px 0;">Membership Plans (INR)</h4>
+                <p style="font-size:0.82rem; color:var(--text-secondary); margin:0;">₹300 Standard, ₹500 Pro, ₹800 Elite, ₹1,200 VIP tiers with 44% yearly savings and instant UPI checkout.</p>
+              </div>
+
+              <!-- Module 5: Store -->
+              <div onclick="App.navigateTo('proshop')" style="background:var(--bg-card); border:1px solid rgba(168,85,247,0.3); border-radius:12px; padding:20px; cursor:pointer; transition:all 0.25s ease;" onmouseover="this.style.transform='translateY(-3px)'; this.style.borderColor='#a855f7';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(168,85,247,0.3)';">
+                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
+                  <div style="width:40px; height:40px; border-radius:10px; background:rgba(168,85,247,0.15); display:flex; align-items:center; justify-content:center; color:#c084fc;">
+                    <svg style="width:20px;height:20px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                  </div>
+                  <span style="font-size:0.75rem; color:#c084fc; font-weight:700;">Open &rarr;</span>
+                </div>
+                <h4 style="font-size:1.05rem; color:#ffffff; margin:0 0 6px 0;">Protein & Supplement Store</h4>
+                <p style="font-size:0.82rem; color:var(--text-secondary); margin:0;">Authentic whey, creatine & isolate powders from Optimum Nutrition & MuscleBlaze with UPI QR scanner.</p>
+              </div>
+
+              <!-- Module 6: Profile -->
+              <div onclick="App.navigateTo('profile')" style="background:var(--bg-card); border:1px solid rgba(244,63,94,0.3); border-radius:12px; padding:20px; cursor:pointer; transition:all 0.25s ease;" onmouseover="this.style.transform='translateY(-3px)'; this.style.borderColor='#f43f5e';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(244,63,94,0.3)';">
+                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
+                  <div style="width:40px; height:40px; border-radius:10px; background:rgba(244,63,94,0.15); display:flex; align-items:center; justify-content:center; color:#f43f5e;">
+                    <svg style="width:20px;height:20px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                  </div>
+                  <span style="font-size:0.75rem; color:#f43f5e; font-weight:700;">Open &rarr;</span>
+                </div>
+                <h4 style="font-size:1.05rem; color:#ffffff; margin:0 0 6px 0;">My Member Profile</h4>
+                <p style="font-size:0.82rem; color:var(--text-secondary); margin:0;">Personal biometric radar, height, current/target weight, coach assignment, and custom DP upload.</p>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Section: Academic & Cloud Links Hub -->
+          <div style="background:var(--bg-card); border:1px solid var(--border-subtle); border-radius:14px; padding:24px; margin-bottom:24px;">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; flex-wrap:wrap; gap:10px;">
+              <h3 style="font-family:'Oswald',sans-serif; font-size:1.2rem; font-weight:600; color:#ffffff; margin:0; letter-spacing:0.5px;">
+                📑 Academic Documentation & Live Edge Deployment
+              </h3>
+              <span style="font-size:0.75rem; color:var(--text-secondary);">OOASE University Submission Grade</span>
+            </div>
+
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:14px;">
+              <a href="https://fitness-athlete-club.vercel.app/" target="_blank" rel="noopener noreferrer" style="text-decoration:none; display:flex; align-items:center; justify-content:space-between; padding:14px 18px; background:rgba(229,9,20,0.08); border:1px solid rgba(229,9,20,0.3); border-radius:10px; color:#fff; transition:all 0.2s;">
+                <div style="display:flex; align-items:center; gap:12px;">
+                  <span style="font-size:1.3rem;">⚡</span>
+                  <div>
+                    <strong style="display:block; font-size:0.88rem; color:#f87171;">Live Vercel Application</strong>
+                    <small style="color:var(--text-secondary); font-size:0.74rem;">fitness-athlete-club.vercel.app</small>
+                  </div>
+                </div>
+                <span style="font-size:0.85rem; color:#f87171;">↗</span>
+              </a>
+
+              <a href="https://github.com/mohammedyusuf-a/gym-membership-management-system" target="_blank" rel="noopener noreferrer" style="text-decoration:none; display:flex; align-items:center; justify-content:space-between; padding:14px 18px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.15); border-radius:10px; color:#fff; transition:all 0.2s;">
+                <div style="display:flex; align-items:center; gap:12px;">
+                  <span style="font-size:1.3rem;">📁</span>
+                  <div>
+                    <strong style="display:block; font-size:0.88rem; color:#f3f4f6;">GitHub Repository</strong>
+                    <small style="color:var(--text-secondary); font-size:0.74rem;">Branch main • Full Source</small>
+                  </div>
+                </div>
+                <span style="font-size:0.85rem; color:#f3f4f6;">↗</span>
+              </a>
+
+              <a href="https://raw.githubusercontent.com/mohammedyusuf-a/gym-membership-management-system/main/report/Fitness_Athlete_Club_OOASE_Project_Report.pdf" target="_blank" rel="noopener noreferrer" style="text-decoration:none; display:flex; align-items:center; justify-content:space-between; padding:14px 18px; background:rgba(37,99,255,0.08); border:1px solid rgba(37,99,255,0.3); border-radius:10px; color:#fff; transition:all 0.2s;">
+                <div style="display:flex; align-items:center; gap:12px;">
+                  <span style="font-size:1.3rem;">📕</span>
+                  <div>
+                    <strong style="display:block; font-size:0.88rem; color:#60a5fa;">Official PDF Report</strong>
+                    <small style="color:var(--text-secondary); font-size:0.74rem;">23 Pages • Print Ready</small>
+                  </div>
+                </div>
+                <span style="font-size:0.85rem; color:#60a5fa;">📥</span>
+              </a>
+
+              <a href="report/OOASE_PROJECT_REPORT.html" target="_blank" rel="noopener noreferrer" style="text-decoration:none; display:flex; align-items:center; justify-content:space-between; padding:14px 18px; background:rgba(168,85,247,0.08); border:1px solid rgba(168,85,247,0.3); border-radius:10px; color:#fff; transition:all 0.2s;">
+                <div style="display:flex; align-items:center; gap:12px;">
+                  <span style="font-size:1.3rem;">🌐</span>
+                  <div>
+                    <strong style="display:block; font-size:0.88rem; color:#c084fc;">Interactive UML Report</strong>
+                    <small style="color:var(--text-secondary); font-size:0.74rem;">7 Scalable Vector Diagrams</small>
+                  </div>
+                </div>
+                <span style="font-size:0.85rem; color:#c084fc;">↗</span>
+              </a>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- ==========================================================================
              VIEW 1: DASHBOARD
              ========================================================================== -->
-        <section class="view-panel active-view" id="view-dashboard">
+        <section class="view-panel" id="view-dashboard">
           
           <!-- ================================================================
                LUXURY GYM WELCOME SHOWCASE (2 LUXURY PHOTOS)
